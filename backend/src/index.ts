@@ -28,30 +28,30 @@ async function main() {
     testnet: process.env.BINANCE_TESTNET === 'true',
   });
 
-  // Health check
+  // Health check (non-blocking for MVP - continue with mock data if fails)
   const healthy = await client.ping();
-  console.log(`Binance API: ${healthy ? 'OK' : 'FAIL'}`);
+  console.log(`Binance API: ${healthy ? 'OK' : 'FAIL (using mock data)'}`);
 
-  if (!healthy) {
-    console.error('Failed to connect to Binance API');
-    process.exit(1);
+  if (healthy) {
+    // Get server time
+    const serverTime = await client.getServerTime();
+    const localTime = Date.now();
+    const drift = Math.abs(serverTime - localTime);
+    console.log(`Time drift: ${drift}ms`);
+
+    // Fetch sample data
+    console.log('\n--- Sample Data ---');
+
+    const klines = await client.getKlines('BTCUSDT', '1h', { limit: 5 });
+    console.log(`BTCUSDT 1h klines: ${klines.length} bars`);
+    console.log(`Latest close: $${klines[klines.length - 1]?.close.toFixed(2)}`);
+
+    const ticker = await client.getTicker('BTCUSDT');
+    console.log(`BTCUSDT bid/ask: $${ticker.bid.toFixed(2)} / $${ticker.ask.toFixed(2)}`);
+  } else {
+    console.log('\nRunning in mock data mode (Binance API unavailable)');
+    console.log('API endpoints will return simulated data');
   }
-
-  // Get server time
-  const serverTime = await client.getServerTime();
-  const localTime = Date.now();
-  const drift = Math.abs(serverTime - localTime);
-  console.log(`Time drift: ${drift}ms`);
-
-  // Fetch sample data
-  console.log('\n--- Sample Data ---');
-
-  const klines = await client.getKlines('BTCUSDT', '1h', { limit: 5 });
-  console.log(`BTCUSDT 1h klines: ${klines.length} bars`);
-  console.log(`Latest close: $${klines[klines.length - 1]?.close.toFixed(2)}`);
-
-  const ticker = await client.getTicker('BTCUSDT');
-  console.log(`BTCUSDT bid/ask: $${ticker.bid.toFixed(2)} / $${ticker.ask.toFixed(2)}`);
 
   // Initialize WebSocket (optional, for real-time data)
   if (process.env.ENABLE_WEBSOCKET === 'true') {
@@ -80,6 +80,13 @@ async function main() {
     console.log('\nData pipeline initialized successfully.');
     console.log('Set ENABLE_WEBSOCKET=true to start real-time streaming.');
   }
+
+  // Keep server alive
+  console.log('\nServer ready. Press Ctrl+C to stop.');
+  process.on('SIGINT', () => {
+    console.log('\nShutting down...');
+    process.exit(0);
+  });
 }
 
 main().catch((error) => {
