@@ -45,11 +45,7 @@ export function PositionsTable({ positions }: PositionsTableProps) {
             <TableCell>
               <Badge
                 variant={position.side === "long" ? "default" : "secondary"}
-                className={cn(
-                  position.side === "long"
-                    ? "bg-green-500/10 text-green-500 hover:bg-green-500/20"
-                    : "bg-red-500/10 text-red-500 hover:bg-red-500/20"
-                )}
+                className={position.side === "long" ? "badge-long" : "badge-short"}
               >
                 {position.side.toUpperCase()}
               </Badge>
@@ -67,7 +63,7 @@ export function PositionsTable({ positions }: PositionsTableProps) {
               <div
                 className={cn(
                   "font-mono",
-                  position.unrealizedPnl >= 0 ? "text-green-500" : "text-red-500"
+                  position.unrealizedPnl >= 0 ? "text-profit" : "text-loss"
                 )}
               >
                 {formatCurrency(position.unrealizedPnl)}

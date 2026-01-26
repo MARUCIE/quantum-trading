@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
+import { useTheme } from "next-themes";
 import {
   createChart,
   ColorType,
@@ -18,6 +19,14 @@ interface CandlestickChartProps {
   className?: string;
 }
 
+// Theme-aware chart colors
+const getChartColors = (isDark: boolean) => ({
+  textColor: isDark ? "rgba(255, 255, 255, 0.7)" : "rgba(0, 0, 0, 0.7)",
+  gridColor: isDark ? "rgba(255, 255, 255, 0.05)" : "rgba(0, 0, 0, 0.05)",
+  crosshairColor: isDark ? "rgba(255, 255, 255, 0.3)" : "rgba(0, 0, 0, 0.3)",
+  borderColor: isDark ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)",
+});
+
 export function CandlestickChart({
   data,
   width,
@@ -27,6 +36,7 @@ export function CandlestickChart({
   const chartContainerRef = useRef<HTMLDivElement>(null);
   const chartRef = useRef<IChartApi | null>(null);
   const seriesRef = useRef<ISeriesApi<"Candlestick"> | null>(null);
+  const { resolvedTheme } = useTheme();
 
   const handleResize = useCallback(() => {
     if (chartRef.current && chartContainerRef.current) {
@@ -36,41 +46,72 @@ export function CandlestickChart({
     }
   }, []);
 
+  // Update chart colors when theme changes
+  useEffect(() => {
+    if (!chartRef.current) return;
+
+    const isDark = resolvedTheme === "dark";
+    const colors = getChartColors(isDark);
+
+    chartRef.current.applyOptions({
+      layout: {
+        textColor: colors.textColor,
+      },
+      grid: {
+        vertLines: { color: colors.gridColor },
+        horzLines: { color: colors.gridColor },
+      },
+      crosshair: {
+        vertLine: { color: colors.crosshairColor },
+        horzLine: { color: colors.crosshairColor },
+      },
+      rightPriceScale: {
+        borderColor: colors.borderColor,
+      },
+      timeScale: {
+        borderColor: colors.borderColor,
+      },
+    });
+  }, [resolvedTheme]);
+
   useEffect(() => {
     if (!chartContainerRef.current) return;
+
+    const isDark = resolvedTheme === "dark";
+    const colors = getChartColors(isDark);
 
     // Create chart
     const chart = createChart(chartContainerRef.current, {
       layout: {
         background: { type: ColorType.Solid, color: "transparent" },
-        textColor: "rgba(255, 255, 255, 0.7)",
+        textColor: colors.textColor,
       },
       grid: {
-        vertLines: { color: "rgba(255, 255, 255, 0.05)" },
-        horzLines: { color: "rgba(255, 255, 255, 0.05)" },
+        vertLines: { color: colors.gridColor },
+        horzLines: { color: colors.gridColor },
       },
       crosshair: {
         mode: 1,
         vertLine: {
           width: 1,
-          color: "rgba(255, 255, 255, 0.3)",
+          color: colors.crosshairColor,
           style: 2,
         },
         horzLine: {
           width: 1,
-          color: "rgba(255, 255, 255, 0.3)",
+          color: colors.crosshairColor,
           style: 2,
         },
       },
       rightPriceScale: {
-        borderColor: "rgba(255, 255, 255, 0.1)",
+        borderColor: colors.borderColor,
         scaleMargins: {
           top: 0.1,
           bottom: 0.1,
         },
       },
       timeScale: {
-        borderColor: "rgba(255, 255, 255, 0.1)",
+        borderColor: colors.borderColor,
         timeVisible: true,
         secondsVisible: false,
       },
@@ -101,7 +142,7 @@ export function CandlestickChart({
       window.removeEventListener("resize", handleResize);
       chart.remove();
     };
-  }, [height, width, handleResize, data]);
+  }, [height, width, handleResize, data, resolvedTheme]);
 
   // Update data when it changes
   useEffect(() => {

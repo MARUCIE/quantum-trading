@@ -29,9 +29,7 @@ export function RecentTrades({ trades }: RecentTradesProps) {
               variant="outline"
               className={cn(
                 "w-12 justify-center",
-                trade.side === "buy"
-                  ? "border-green-500/50 text-green-500"
-                  : "border-red-500/50 text-red-500"
+                trade.side === "buy" ? "badge-buy-outline" : "badge-sell-outline"
               )}
             >
               {trade.side.toUpperCase()}

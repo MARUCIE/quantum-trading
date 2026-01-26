@@ -79,6 +79,10 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  /* Trading-specific colors */
+  --profit: oklch(0.55 0.2 142);
+  --loss: oklch(0.55 0.22 25);
+  --neutral: oklch(0.45 0 0);
 }
 
 .dark {
@@ -126,4 +130,64 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Theme transition - smooth switching between light/dark */
+html.transitioning,
+html.transitioning *,
+html.transitioning *::before,
+html.transitioning *::after {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease, stroke 0.3s ease !important;
+  transition-delay: 0s !important;
+}
+
+/* Trading-specific utility classes */
+.text-profit {
+  color: var(--profit);
+}
+
+.text-loss {
+  color: var(--loss);
+}
+
+.text-neutral {
+  color: var(--neutral);
+}
+
+.bg-profit {
+  background-color: var(--profit);
+}
+
+.bg-loss {
+  background-color: var(--loss);
+}
+
+/* Trading badge styles with opacity */
+.badge-long {
+  background-color: oklch(from var(--profit) l c h / 0.1);
+  color: var(--profit);
+}
+
+.badge-long:hover {
+  background-color: oklch(from var(--profit) l c h / 0.2);
+}
+
+.badge-short {
+  background-color: oklch(from var(--loss) l c h / 0.1);
+  color: var(--loss);
+}
+
+.badge-short:hover {
+  background-color: oklch(from var(--loss) l c h / 0.2);
+}
+
+/* Trading outline badge styles */
+.badge-buy-outline {
+  border-color: oklch(from var(--profit) l c h / 0.5);
+  color: var(--profit);
+}
+
+.badge-sell-outline {
+  border-color: oklch(from var(--loss) l c h / 0.5);
+  color: var(--loss);
 }

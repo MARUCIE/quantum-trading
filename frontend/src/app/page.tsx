@@ -201,7 +201,7 @@ export default function OverviewPage() {
                   <div>
                     <p
                       className={`text-lg font-bold ${
-                        strategy.pnl >= 0 ? "text-green-500" : "text-red-500"
+                        strategy.pnl >= 0 ? "text-profit" : "text-loss"
                       }`}
                     >
                       {formatCurrency(strategy.pnl)}

@@ -25,9 +25,9 @@ export function StatsCard({
 }: StatsCardProps) {
   const trendColor =
     trend === "up"
-      ? "text-green-500"
+      ? "text-profit"
       : trend === "down"
-        ? "text-red-500"
+        ? "text-loss"
         : "text-muted-foreground";
 
   return (
