@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Header } from "@/components/layout/header";
+import { SkipLink } from "@/components/layout/skip-link";
 import { Providers } from "@/components/providers";
 import "./globals.css";
 
@@ -32,11 +33,16 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>
+          <SkipLink />
           <div className="flex h-screen overflow-hidden">
             <Sidebar />
             <div className="flex flex-1 flex-col overflow-hidden">
               <Header />
-              <main className="flex-1 overflow-auto bg-background p-6">
+              <main
+                id="main-content"
+                className="flex-1 overflow-auto bg-background p-4 md:p-6 custom-scrollbar"
+                tabIndex={-1}
+              >
                 {children}
               </main>
             </div>

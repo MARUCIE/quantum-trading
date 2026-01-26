@@ -44,6 +44,11 @@ Related:
 | D30 | Frontend API 集成 | TanStack Query Hooks + API Client | code | frontend/src/lib/api/* |
 | D31 | Backend REST API | HTTP Server + Routes (15 endpoints) | code | backend/src/api/* |
 | D32 | MVP E2E 验证报告 | TypeScript 编译 + Build 验证通过 | verification report | doc/00_project/initiative_quantum_x/MVP_VERIFICATION_REPORT.md |
+| D33 | UI/UX: 深色/浅色主题 | next-themes 集成、平滑过渡动画 | code | frontend/src/components/theme-*.tsx |
+| D34 | UI/UX: 响应式设计 | 移动端抽屉导航、响应式头部 | code | frontend/src/components/layout/mobile-nav.tsx |
+| D35 | UI/UX: 加载状态 | Dashboard 骨架屏组件 | code | frontend/src/components/dashboard/loading-skeletons.tsx |
+| D36 | UI/UX: 微交互动画 | 卡片悬浮、按钮反馈、渐入动画 | code | frontend/src/app/globals.css (animations) |
+| D37 | UI/UX: 动画数字组件 | 数值变化动画、货币/百分比变体 | code | frontend/src/components/ui/animated-number.tsx |
 
 # Release/Deployment Notes
 - rollout strategy: Local development → Paper trading → Testnet → Production
@@ -67,3 +72,4 @@ Related:
 - 2026-01-26: frontend MVP verified: 8 pages working, TradingView charts integrated, Playwright tests passed.
 - 2026-01-26: added backend implementation deliverables (D20-D32): E1-E7 Epic code, API integration, verification report.
 - 2026-01-26: MVP implementation complete. All 32 deliverables ready.
+- 2026-01-26: Added UI/UX polish deliverables (D33-D37): theme, responsive, loading, animations.

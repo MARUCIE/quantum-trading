@@ -58,6 +58,13 @@ Related:
 | T33 | E7 Venue Adapter implementation | ai-agent | T25 | medium | exchange API connected | Done |
 | T34 | Frontend API integration | ai-agent | T32,T33 | high | frontend connected to backend | Done |
 | T35 | MVP end-to-end verification | ai-agent | T34 | high | all gates passing | Done |
+| T36 | UI/UX: Dark/Light theme support | ai-agent | T35 | medium | theme toggle working, smooth transitions | Done |
+| T37 | UI/UX: Responsive design | ai-agent | T36 | medium | mobile nav drawer, responsive header | Done |
+| T38 | UI/UX: Loading states | ai-agent | T37 | medium | skeleton components for all dashboard elements | Done |
+| T39 | UI/UX: Micro-interactions | ai-agent | T38 | low | hover effects, animations, tooltips | Done |
+| T40 | UI/UX: Accessibility (a11y) | ai-agent | T39 | medium | keyboard navigation, ARIA labels | Pending |
+| T41 | UI/UX: Form validation | ai-agent | T40 | medium | input states, error handling | Pending |
+| T42 | Performance optimization | ai-agent | T41 | medium | code splitting, lazy loading | Pending |
 
 # Milestones
 - M1: Docs baseline complete (PDCA + PRD + architecture + UX)
@@ -75,6 +82,8 @@ Related:
 - M13: Backend Epic implementation complete (E1-E7: Data, Features, Research, Strategy, Execution, Risk, Venue)
 - M14: Frontend-Backend API integration complete
 - M15: MVP end-to-end verification passed
+- M16: UI/UX polish complete (theme, responsive, loading, animations, a11y)
+- M17: Production readiness (performance, testing, deployment)
 
 # Risks & Mitigations
 - R1: Overfitting and backtest bias / mitigation: robust validation and walk-forward
@@ -112,6 +121,7 @@ Related:
 - 2026-01-26: implemented 8 pages: Overview, Strategies, Trading, Risk, Backtest, Copy, Settings, Alerts.
 - 2026-01-26: completed T24-T35 (Asset/Compliance scope, Data vendors, Risk config, E1-E7 implementation, API integration, E2E verification).
 - 2026-01-26: MVP implementation complete. All 35 tasks done.
+- 2026-01-26: Added UI/UX optimization tasks (T36-T42). Completed T36-T39 (theme, responsive, loading, animations).
 
 ## Engineering Protocol
 
