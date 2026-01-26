@@ -41,6 +41,11 @@ Related:
 | T16 | MVP milestones & verification | ai-agent | T14 | medium | milestone/verification docs exist | Done |
 | T17 | API config guide & defaults | ai-agent | T16 | medium | API/DEFAULT docs exist | Done |
 | T18 | Venue adapter component | ai-agent | T3 | medium | venue_adapter docs exist | Done |
+| T19 | Frontend SOTA research | ai-agent | T3 | medium | notes.md contains frontend research | Done |
+| T20 | Frontend architecture design | ai-agent | T19 | medium | frontend design doc exists | Done |
+| T21 | Frontend MVP implementation | ai-agent | T20 | high | Next.js app builds successfully | Done |
+| T22 | Frontend pages: Overview, Strategies, Trading, Risk | ai-agent | T21 | high | all core pages implemented | Done |
+| T23 | Frontend pages: Backtest, Copy, Settings, Alerts | ai-agent | T21 | medium | all secondary pages implemented | Done |
 
 # Milestones
 - M1: Docs baseline complete (PDCA + PRD + architecture + UX)
@@ -54,6 +59,7 @@ Related:
 - M9: Canonical contracts defined
 - M10: MVP milestones and verification defined
 - M11: API config and venue adapter defined
+- M12: Frontend MVP implementation complete (8 pages, TradingView charts, dark theme)
 
 # Risks & Mitigations
 - R1: Overfitting and backtest bias / mitigation: robust validation and walk-forward
@@ -64,6 +70,10 @@ Related:
 - D1: Use multi-layer architecture (data, research, strategy, execution, ops)
 - D2: Treat OSS repos as references, not mandatory dependencies
 - D3: Prefer NautilusTrader + Qlib as core reference stack
+- D4: Use Next.js 15 + Tailwind CSS 4 + shadcn/ui as frontend stack
+- D5: Use TradingView Lightweight Charts v5 for financial charting
+- D6: Use Zustand for client state, TanStack Query for server state
+- D7: Target performance: LCP <2.5s, CLS <0.1, FID <100ms
 
 # Next Steps
 - Confirm asset-class rollout priority and compliance scope
@@ -82,6 +92,9 @@ Related:
 - 2026-01-25: added contracts specification.
 - 2026-01-25: added MVP milestones and verification plans.
 - 2026-01-25: added API config guide, default scope, and venue adapter component.
+- 2026-01-26: completed frontend SOTA research (TradingView, Bloomberg, Binance patterns).
+- 2026-01-26: completed frontend architecture design and MVP implementation.
+- 2026-01-26: implemented 8 pages: Overview, Strategies, Trading, Risk, Backtest, Copy, Settings, Alerts.
 
 ## Engineering Protocol
 

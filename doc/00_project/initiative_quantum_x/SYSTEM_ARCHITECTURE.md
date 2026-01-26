@@ -11,7 +11,19 @@
 
 ## 架构总览
 ```mermaid
-flowchart LR
+flowchart TB
+  subgraph Frontend["Frontend (Next.js 15 + shadcn/ui)"]
+    UI[Trading Dashboard]
+    Charts[TradingView Charts]
+    WS[WebSocket Client]
+  end
+
+  subgraph API["API Gateway (BFF)"]
+    REST[REST API]
+    WSS[WebSocket Server]
+    Auth[Auth Service]
+  end
+
   subgraph Data
     MD[Market Data Ingest]
     FD[Fundamental Data]
@@ -56,6 +68,19 @@ flowchart LR
     Governance[Approval & Versioning]
   end
 
+  UI --> REST
+  Charts --> REST
+  WS --> WSS
+  REST --> Auth
+  WSS --> Auth
+
+  REST --> Strategy
+  REST --> Execution
+  REST --> Research
+  WSS --> Signal
+  WSS --> OMS
+  WSS --> Monitor
+
   MD --> Norm --> Lake --> Feature
   FD --> Norm
   Alt --> Norm
@@ -77,6 +102,30 @@ flowchart LR
   Governance --> Catalog
   Governance --> Registry
 ```
+
+## Frontend 层（新增）
+
+### 技术栈
+- **Framework**: Next.js 15 (App Router, RSC, Streaming SSR)
+- **UI Components**: shadcn/ui + Tailwind CSS 4
+- **Charting**: TradingView Lightweight Charts
+- **State**: Zustand (client) + TanStack Query (server)
+- **Real-time**: Native WebSocket with auto-reconnect
+
+### 页面结构
+| 路由 | 功能 | 数据源 |
+|------|------|--------|
+| `/overview` | Portfolio overview, P&L | REST + WS |
+| `/strategies` | Strategy management | REST |
+| `/backtest` | Backtest results | REST |
+| `/trading` | Live trading view | REST + WS |
+| `/risk` | Risk monitoring | REST + WS |
+
+### 性能目标
+- LCP < 2.5s
+- CLS < 0.1
+- FID < 100ms
+- Zero console errors
 
 ## 关键模块说明
 - 数据层：统一数据接入、质量校验、版本化与特征服务

@@ -1,0 +1,84 @@
+"use client";
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
+import { Position } from "@/lib/stores/portfolio-store";
+
+interface PositionsTableProps {
+  positions: Position[];
+}
+
+export function PositionsTable({ positions }: PositionsTableProps) {
+  const formatCurrency = (value: number) =>
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(value);
+
+  const formatPercent = (value: number) =>
+    `${value >= 0 ? "+" : ""}${value.toFixed(2)}%`;
+
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Symbol</TableHead>
+          <TableHead>Side</TableHead>
+          <TableHead className="text-right">Quantity</TableHead>
+          <TableHead className="text-right">Entry Price</TableHead>
+          <TableHead className="text-right">Current Price</TableHead>
+          <TableHead className="text-right">P&L</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {positions.map((position) => (
+          <TableRow key={position.symbol}>
+            <TableCell className="font-medium">{position.symbol}</TableCell>
+            <TableCell>
+              <Badge
+                variant={position.side === "long" ? "default" : "secondary"}
+                className={cn(
+                  position.side === "long"
+                    ? "bg-green-500/10 text-green-500 hover:bg-green-500/20"
+                    : "bg-red-500/10 text-red-500 hover:bg-red-500/20"
+                )}
+              >
+                {position.side.toUpperCase()}
+              </Badge>
+            </TableCell>
+            <TableCell className="text-right font-mono">
+              {position.quantity}
+            </TableCell>
+            <TableCell className="text-right font-mono">
+              {formatCurrency(position.entryPrice)}
+            </TableCell>
+            <TableCell className="text-right font-mono">
+              {formatCurrency(position.currentPrice)}
+            </TableCell>
+            <TableCell className="text-right">
+              <div
+                className={cn(
+                  "font-mono",
+                  position.unrealizedPnl >= 0 ? "text-green-500" : "text-red-500"
+                )}
+              >
+                {formatCurrency(position.unrealizedPnl)}
+                <span className="ml-1 text-xs">
+                  ({formatPercent(position.unrealizedPnlPercent)})
+                </span>
+              </div>
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+}

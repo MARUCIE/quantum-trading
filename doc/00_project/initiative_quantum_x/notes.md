@@ -9,6 +9,50 @@ Related:
 ---
 
 # Research / References
+
+## Frontend SOTA Research (2026-01-26)
+
+### TradingView Charting
+- Source: https://www.tradingview.com/lightweight-charts/, https://github.com/tradingview/lightweight-charts
+- Lightweight Charts: open-source, HTML5 canvas, minimal footprint, handles thousands of bars with sub-second updates
+- Advanced Charts: commercial, full customization API, featuresets for UI element control
+- React integration: official tutorials at https://tradingview.github.io/lightweight-charts/tutorials/react/advanced
+- Best practice: use `.update()` for real-time updates instead of `.setData()` to maintain performance
+
+### Bloomberg Terminal UX
+- Source: https://www.bloomberg.com/ux/, https://www.bloomberg.com/company/stories/how-bloomberg-terminal-ux-designers-conceal-complexity/
+- Tech stack: Chromium-based (HTML5, CSS3, JavaScript), hardware graphics acceleration
+- Key pattern: tabbed panel model, arbitrary window count, dynamic sizing
+- Design philosophy: human-centered design, incremental evolution over revolution
+- UX principle: concealing complexity while exposing power features
+
+### Binance WebSocket Performance
+- Source: https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams
+- Latency: <100ms average, sub-second streaming
+- Connection: ping every 3 min, 10 msg/sec limit, max 1024 streams per connection
+- Best practice: auto-reconnect with exponential backoff, heartbeat messages, wss:// for security
+
+### Modern Trading Dashboard Tech Stack (2025)
+- Source: https://github.com/marketcalls/openalgo (OpenAlgo - open-source algo trading)
+- Stack: Next.js 15 + Tailwind CSS 4 + shadcn/ui + TradingView Lightweight Charts
+- State: Zustand (client) + TanStack Query (server)
+- Real-time: Socket.IO for orders/trades/positions
+- Additional: CodeMirror (strategy editor), React Flow (visual flow builder)
+
+### UI Component Libraries
+- Source: https://ui.shadcn.com/docs/tailwind-v4, https://www.devkit.best/blog/mdx/shadcn-ui-ecosystem-complete-guide-2025
+- shadcn/ui: accessible, headless components based on Radix UI, full Tailwind flexibility
+- Tailwind v4 + shadcn: ships UIs 3x faster, no runtime styling, full source control
+- Dark mode: CSS variables for theme switching, built-in dark/light support
+
+### Frontend Architecture Decision
+- D4: Use Next.js 15 + Tailwind CSS 4 + shadcn/ui as core frontend stack
+- D5: Use TradingView Lightweight Charts for financial charting
+- D6: Use Zustand for client state, TanStack Query for server state
+- D7: Use WebSocket (native or Socket.IO) for real-time data with auto-reconnect
+- D8: Target performance: LCP <2.5s, CLS <0.1, FID <100ms, zero console errors
+
+## Backend Research (2026-01-24)
 - 2026-01-24: QuantConnect Lean (https://github.com/QuantConnect/Lean) - algorithmic trading engine with backtest/live support and multi-asset focus.
 - 2026-01-24: Qlib (https://github.com/microsoft/qlib) - AI-oriented quant research platform covering data, modeling, and evaluation.
 - 2026-01-24: NautilusTrader (https://github.com/nautechsystems/nautilus_trader) - event-driven trading platform emphasizing backtest/live parity.
