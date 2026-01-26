@@ -1,0 +1,13 @@
+# 20_components 索引
+- data_ingestion
+- feature_store
+- research_orchestrator
+- model_registry
+- strategy_registry
+- risk_engine
+- order_manager
+- execution_router
+- signal_bus
+- monitoring_audit
+- contracts
+- venue_adapter

@@ -1,0 +1,109 @@
+# 项目文档索引
+
+## Docs Map
+- 00_project/index.md: 项目级入口与 initiative 列表
+- 00_project/initiative_quantum_x/: 量化交易系统 initiative 全量文档
+- 10_features/: 功能级文档目录
+- 20_components/: 组件级文档目录
+- 99_archive/: 归档快照
+
+## Path Index (AI-tools managed)
+<!-- AI-TOOLS-MANAGED:PATH_INDEX START -->
+- PROJECT_DIR: /Users/mauricewen/Projects/quantum x
+- doc/index.md
+- doc/00_project/index.md
+- doc/00_project/initiative_quantum_x/index.md
+- doc/00_project/initiative_quantum_x/PRD.md
+- doc/00_project/initiative_quantum_x/SYSTEM_ARCHITECTURE.md
+- doc/00_project/initiative_quantum_x/USER_EXPERIENCE_MAP.md
+- doc/00_project/initiative_quantum_x/PLATFORM_OPTIMIZATION_PLAN.md
+- doc/00_project/initiative_quantum_x/EXECUTION_ROADMAP.md
+- doc/00_project/initiative_quantum_x/MVP_POC_PLAN.md
+- doc/00_project/initiative_quantum_x/MVP_IMPLEMENTATION_BACKLOG.md
+- doc/00_project/initiative_quantum_x/MVP_MILESTONE_PLAN.md
+- doc/00_project/initiative_quantum_x/MVP_VERIFICATION_PLAN.md
+- doc/00_project/initiative_quantum_x/API_CONFIGURATION_GUIDE.md
+- doc/00_project/initiative_quantum_x/DEFAULT_MVP_SCOPE.md
+- doc/00_project/initiative_quantum_x/PDCA_EXECUTION_PLAN.md
+- doc/00_project/initiative_quantum_x/PDCA_ITERATION_CHECKLIST.md
+- doc/00_project/initiative_quantum_x/ROLLING_REQUIREMENTS_AND_PROMPTS.md
+- doc/00_project/initiative_quantum_x/task_plan.md
+- doc/00_project/initiative_quantum_x/notes.md
+- doc/00_project/initiative_quantum_x/deliverable.md
+- doc/10_features/index.md
+- doc/10_features/data_platform/index.md
+- doc/10_features/data_platform/design.md
+- doc/10_features/data_platform/test_plan.md
+- doc/10_features/data_platform/runbook.md
+- doc/10_features/strategy_system/index.md
+- doc/10_features/strategy_system/design.md
+- doc/10_features/strategy_system/test_plan.md
+- doc/10_features/strategy_system/runbook.md
+- doc/10_features/execution_risk/index.md
+- doc/10_features/execution_risk/design.md
+- doc/10_features/execution_risk/test_plan.md
+- doc/10_features/execution_risk/runbook.md
+- doc/10_features/copy_trading/index.md
+- doc/10_features/copy_trading/design.md
+- doc/10_features/copy_trading/test_plan.md
+- doc/10_features/copy_trading/runbook.md
+- doc/20_components/index.md
+- doc/20_components/data_ingestion/index.md
+- doc/20_components/data_ingestion/design.md
+- doc/20_components/data_ingestion/api.md
+- doc/20_components/data_ingestion/config.md
+- doc/20_components/data_ingestion/runbook.md
+- doc/20_components/feature_store/index.md
+- doc/20_components/feature_store/design.md
+- doc/20_components/feature_store/api.md
+- doc/20_components/feature_store/config.md
+- doc/20_components/feature_store/runbook.md
+- doc/20_components/research_orchestrator/index.md
+- doc/20_components/research_orchestrator/design.md
+- doc/20_components/research_orchestrator/api.md
+- doc/20_components/research_orchestrator/config.md
+- doc/20_components/research_orchestrator/runbook.md
+- doc/20_components/model_registry/index.md
+- doc/20_components/model_registry/design.md
+- doc/20_components/model_registry/api.md
+- doc/20_components/model_registry/config.md
+- doc/20_components/model_registry/runbook.md
+- doc/20_components/strategy_registry/index.md
+- doc/20_components/strategy_registry/design.md
+- doc/20_components/strategy_registry/api.md
+- doc/20_components/strategy_registry/config.md
+- doc/20_components/strategy_registry/runbook.md
+- doc/20_components/risk_engine/index.md
+- doc/20_components/risk_engine/design.md
+- doc/20_components/risk_engine/api.md
+- doc/20_components/risk_engine/config.md
+- doc/20_components/risk_engine/runbook.md
+- doc/20_components/order_manager/index.md
+- doc/20_components/order_manager/design.md
+- doc/20_components/order_manager/api.md
+- doc/20_components/order_manager/config.md
+- doc/20_components/order_manager/runbook.md
+- doc/20_components/execution_router/index.md
+- doc/20_components/execution_router/design.md
+- doc/20_components/execution_router/api.md
+- doc/20_components/execution_router/config.md
+- doc/20_components/execution_router/runbook.md
+- doc/20_components/signal_bus/index.md
+- doc/20_components/signal_bus/design.md
+- doc/20_components/signal_bus/api.md
+- doc/20_components/signal_bus/config.md
+- doc/20_components/signal_bus/runbook.md
+- doc/20_components/monitoring_audit/index.md
+- doc/20_components/monitoring_audit/design.md
+- doc/20_components/monitoring_audit/api.md
+- doc/20_components/monitoring_audit/config.md
+- doc/20_components/monitoring_audit/runbook.md
+- doc/20_components/contracts/index.md
+- doc/20_components/contracts/design.md
+- doc/20_components/venue_adapter/index.md
+- doc/20_components/venue_adapter/design.md
+- doc/20_components/venue_adapter/api.md
+- doc/20_components/venue_adapter/config.md
+- doc/20_components/venue_adapter/runbook.md
+- doc/99_archive/index.md
+<!-- AI-TOOLS-MANAGED:PATH_INDEX END -->
