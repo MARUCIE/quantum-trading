@@ -9,6 +9,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 import { ThemeProvider } from "./theme-provider";
+import { TooltipProvider } from "./ui/tooltip";
 
 interface ProvidersProps {
   children: React.ReactNode;
@@ -31,7 +32,9 @@ export function Providers({ children }: ProvidersProps) {
 
   return (
     <ThemeProvider>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <TooltipProvider delayDuration={300}>
+        <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      </TooltipProvider>
     </ThemeProvider>
   );
 }
