@@ -137,7 +137,7 @@ export function MobileNav() {
         </SheetHeader>
 
         {/* Primary Navigation */}
-        <nav className="flex-1 space-y-1 px-3 py-4">
+        <nav aria-label="Mobile navigation" className="flex-1 space-y-1 px-3 py-4">
           {navigation.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -164,7 +164,7 @@ export function MobileNav() {
         <Separator />
 
         {/* Secondary Navigation */}
-        <nav className="space-y-1 px-3 py-4">
+        <nav aria-label="Mobile secondary navigation" className="space-y-1 px-3 py-4">
           {secondaryNavigation.map((item) => {
             const isActive = pathname === item.href;
             return (

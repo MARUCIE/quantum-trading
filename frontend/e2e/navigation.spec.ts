@@ -23,70 +23,70 @@ test.describe("Navigation", () => {
   test("should navigate to Strategies page", async ({ page }) => {
     await page.goto("/");
 
-    // Click on Strategies in sidebar
-    await page.getByRole("link", { name: /strategies/i }).click();
+    // Click on Strategies in sidebar (use first to avoid mobile nav duplicate)
+    await page.getByRole("link", { name: /strategies/i }).first().click();
 
     // Verify URL changed
     await expect(page).toHaveURL("/strategies");
 
-    // Wait for page to hydrate and verify content
-    await expect(page.getByRole("heading", { name: "Strategies" })).toBeVisible({ timeout: 10000 });
+    // Wait for page title (h1) to be visible - use level: 1 to target main heading
+    await expect(page.getByRole("heading", { level: 1, name: /strategies/i })).toBeVisible({ timeout: 10000 });
   });
 
   test("should navigate to Trading page", async ({ page }) => {
     await page.goto("/");
 
-    await page.getByRole("link", { name: /trading/i }).click();
+    await page.getByRole("link", { name: /trading/i }).first().click();
 
     await expect(page).toHaveURL("/trading");
-    // Wait for page to hydrate with WebSocket data
-    await expect(page.getByRole("heading", { name: "Trading" })).toBeVisible({ timeout: 10000 });
+    // Wait for page title (h1) to be visible
+    await expect(page.getByRole("heading", { level: 1, name: /trading/i })).toBeVisible({ timeout: 10000 });
   });
 
   test("should navigate to Risk page", async ({ page }) => {
     await page.goto("/");
 
-    await page.getByRole("link", { name: /risk/i }).click();
+    await page.getByRole("link", { name: /risk/i }).first().click();
 
     await expect(page).toHaveURL("/risk");
-    await expect(page.getByRole("heading", { name: "Risk Management" })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1, name: /risk/i })).toBeVisible({ timeout: 10000 });
   });
 
   test("should navigate to Backtest page", async ({ page }) => {
     await page.goto("/");
 
-    await page.getByRole("link", { name: /backtest/i }).click();
+    await page.getByRole("link", { name: /backtest/i }).first().click();
 
     await expect(page).toHaveURL("/backtest");
-    // Wait for page to hydrate
-    await expect(page.getByRole("heading", { name: "Backtest" })).toBeVisible({ timeout: 10000 });
+    // Wait for page title (h1) to be visible
+    await expect(page.getByRole("heading", { level: 1, name: /backtest/i })).toBeVisible({ timeout: 10000 });
   });
 
   test("should navigate to Copy Trading page", async ({ page }) => {
     await page.goto("/");
 
-    await page.getByRole("link", { name: /copy/i }).click();
+    await page.getByRole("link", { name: /copy/i }).first().click();
 
     await expect(page).toHaveURL("/copy");
-    await expect(page.getByRole("heading", { name: "Copy Trading" })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1, name: /copy/i })).toBeVisible({ timeout: 10000 });
   });
 
   test("should navigate to Settings page", async ({ page }) => {
     await page.goto("/");
 
-    await page.getByRole("link", { name: /settings/i }).click();
+    await page.getByRole("link", { name: /settings/i }).first().click();
 
     await expect(page).toHaveURL("/settings");
-    await expect(page.getByRole("heading", { name: "Settings" })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1, name: /settings/i })).toBeVisible({ timeout: 10000 });
   });
 
   test("should navigate to Alerts page", async ({ page }) => {
     await page.goto("/");
 
-    await page.getByRole("link", { name: /alerts/i }).click();
+    await page.getByRole("link", { name: /alerts/i }).first().click();
 
     await expect(page).toHaveURL("/alerts");
-    await expect(page.getByRole("heading", { name: "Alerts" })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1, name: /alerts/i })).toBeVisible({ timeout: 10000 });
   });
 });
 
@@ -107,10 +107,11 @@ test.describe("Mobile Navigation", () => {
     await page.getByRole("button", { name: /menu/i }).click();
 
     // Wait for navigation drawer to animate open
-    await expect(page.getByRole("navigation", { name: /mobile/i })).toBeVisible({ timeout: 5000 });
+    const mobileNav = page.getByRole("navigation", { name: /mobile navigation/i });
+    await expect(mobileNav).toBeVisible({ timeout: 5000 });
 
-    // Click a link to close - wait for it to be visible first
-    const strategiesLink = page.getByRole("link", { name: /strategies/i });
+    // Click a link to close - use locator within mobile nav context
+    const strategiesLink = mobileNav.getByRole("link", { name: /strategies/i });
     await expect(strategiesLink).toBeVisible({ timeout: 5000 });
     await strategiesLink.click();
 

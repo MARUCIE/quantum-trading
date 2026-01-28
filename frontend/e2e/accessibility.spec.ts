@@ -48,12 +48,12 @@ test.describe("Accessibility", () => {
   test("should have proper ARIA labels on interactive elements", async ({ page }) => {
     await page.goto("/");
 
-    // Theme toggle should have label
-    const themeButton = page.getByRole("button", { name: /theme/i });
+    // Theme toggle should have aria-label (use first() as there may be multiple)
+    const themeButton = page.getByRole("button", { name: /toggle theme/i }).first();
     await expect(themeButton).toHaveAttribute("aria-label");
 
-    // Notification button should have label
-    const notificationButton = page.getByRole("button", { name: /notifications/i });
+    // Notification button should exist (use first() as desktop/mobile may have separate)
+    const notificationButton = page.getByRole("button", { name: /notifications/i }).first();
     await expect(notificationButton).toBeVisible();
   });
 
