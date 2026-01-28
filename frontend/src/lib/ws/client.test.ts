@@ -80,12 +80,13 @@ beforeEach(() => {
   // Reset module cache to get fresh client instances
   vi.resetModules();
   mockWsInstance = null;
-  (globalThis as unknown as { WebSocket: typeof MockWebSocket }).WebSocket = class extends MockWebSocket {
+  // @ts-expect-error - MockWebSocket doesn't perfectly match WebSocket interface
+  globalThis.WebSocket = class extends MockWebSocket {
     constructor(url: string) {
       super(url);
       mockWsInstance = this;
     }
-  } as unknown as typeof WebSocket;
+  };
 });
 
 afterEach(() => {

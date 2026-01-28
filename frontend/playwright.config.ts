@@ -26,7 +26,16 @@ export default defineConfig({
     // Set NEXT_LOCALE cookie for next-intl (defaults to zh without this)
     storageState: {
       cookies: [
-        { name: "NEXT_LOCALE", value: "en", domain: "localhost", path: "/" },
+        {
+          name: "NEXT_LOCALE",
+          value: "en",
+          domain: "localhost",
+          path: "/",
+          expires: -1,
+          httpOnly: false,
+          secure: false,
+          sameSite: "Lax" as const,
+        },
       ],
       origins: [],
     },
