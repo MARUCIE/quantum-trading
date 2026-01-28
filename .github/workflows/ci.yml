@@ -134,15 +134,6 @@ jobs:
         working-directory: frontend
         run: npm run build
 
-      - name: List build output
-        run: |
-          echo "=== Repo root ==="
-          ls -la
-          echo "=== frontend/ ==="
-          ls -la frontend/
-          echo "=== frontend/.next/ ==="
-          ls -la frontend/.next/ || echo "No .next folder"
-
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
