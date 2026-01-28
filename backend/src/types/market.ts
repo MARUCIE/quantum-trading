@@ -43,6 +43,22 @@ export interface Trade {
   tradeId: string;
 }
 
+/** Order book price level */
+export interface OrderBookLevel {
+  price: number;
+  size: number;
+}
+
+/** Unified order book contract */
+export interface OrderBook {
+  timestamp: number;
+  symbol: string;
+  exchange: string;
+  bids: OrderBookLevel[];  // Sorted descending by price (best bid first)
+  asks: OrderBookLevel[];  // Sorted ascending by price (best ask first)
+  lastUpdateId: number;
+}
+
 /** Supported kline intervals */
 export type KlineInterval =
   | '1m' | '3m' | '5m' | '15m' | '30m'

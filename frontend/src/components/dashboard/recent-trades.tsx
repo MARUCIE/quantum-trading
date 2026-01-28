@@ -2,11 +2,11 @@
 
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { RecentTrade } from "@/lib/mock-data";
+import type { Trade } from "@/lib/api/types";
 import { formatDistanceToNow } from "date-fns";
 
 interface RecentTradesProps {
-  trades: RecentTrade[];
+  trades: Trade[];
 }
 
 export function RecentTrades({ trades }: RecentTradesProps) {
@@ -21,7 +21,7 @@ export function RecentTrades({ trades }: RecentTradesProps) {
     <div className="space-y-3 stagger-children">
       {trades.map((trade) => (
         <div
-          key={trade.id}
+          key={trade.tradeId}
           className="flex items-center justify-between rounded-lg border border-border p-3 transition-colors hover:bg-accent/50 cursor-pointer"
         >
           <div className="flex items-center gap-3">
@@ -36,7 +36,9 @@ export function RecentTrades({ trades }: RecentTradesProps) {
             </Badge>
             <div>
               <p className="font-medium">{trade.symbol}</p>
-              <p className="text-xs text-muted-foreground">{trade.strategy}</p>
+              <p className="text-xs text-muted-foreground">
+                {trade.exchange || "Market"}
+              </p>
             </div>
           </div>
           <div className="text-right">

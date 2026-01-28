@@ -1,0 +1,81 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2]:
+    - /url: "#main-content"
+  - generic [ref=e4]:
+    - banner [ref=e5]:
+      - generic [ref=e6]:
+        - button "Toggle navigation menu" [ref=e7]:
+          - img
+          - generic [ref=e8]: Toggle navigation menu
+        - button "Open search" [ref=e9]:
+          - img
+      - group "Actions" [ref=e10]:
+        - 'status "Market status: Open" [ref=e11]'
+        - button "Notifications, 3 unread" [ref=e14]:
+          - img
+          - generic [ref=e15]: "3"
+        - button "Switch language" [ref=e16]:
+          - img
+          - generic [ref=e17]: Switch language
+        - button "Toggle theme" [ref=e18]:
+          - img
+          - generic [ref=e19]: Toggle theme
+    - main [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - heading "Settings" [level=1] [ref=e23]
+          - paragraph [ref=e24]: Manage your account and preferences
+        - generic [ref=e25]:
+          - navigation "Settings sections" [ref=e26]:
+            - button "Profile" [ref=e27]:
+              - img
+              - text: Profile
+            - button "API Keys" [ref=e28]:
+              - img
+              - text: API Keys
+            - button "Notifications" [ref=e29]:
+              - img
+              - text: Notifications
+            - button "Security" [ref=e30]:
+              - img
+              - text: Security
+            - button "Appearance" [ref=e31]:
+              - img
+              - text: Appearance
+            - button "Language" [ref=e32]:
+              - img
+              - text: Language
+          - generic [ref=e34]:
+            - heading "Profile" [level=3] [ref=e36]
+            - generic [ref=e37]:
+              - generic [ref=e38]:
+                - generic [ref=e39]: QX
+                - generic [ref=e40]:
+                  - heading "Test User" [level=3] [ref=e41]
+                  - paragraph [ref=e42]: test@example.com
+              - generic [ref=e43]:
+                - generic [ref=e44]:
+                  - generic [ref=e45]:
+                    - generic [ref=e46]: Display Name*
+                    - textbox "Display Name" [ref=e47]:
+                      - /placeholder: Enter your name
+                      - text: Test User
+                  - generic [ref=e48]:
+                    - generic [ref=e49]: Email*
+                    - textbox "Email" [ref=e50]:
+                      - /placeholder: Enter your email
+                      - text: test@example.com
+                - generic [ref=e51]:
+                  - text: Bio
+                  - textbox "Bio" [ref=e52]:
+                    - /placeholder: Tell us about yourself...
+                  - paragraph [ref=e53]: Brief description about yourself (optional)
+                - button "Save Changes" [ref=e55]
+  - generic "Notifications"
+  - button "Open Next.js Dev Tools" [ref=e61] [cursor=pointer]:
+    - img [ref=e62]
+  - alert [ref=e67]
+```

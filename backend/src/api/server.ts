@@ -2,10 +2,15 @@
  * HTTP API Server
  *
  * Lightweight REST API server using Node.js built-in http module.
+ * Includes security middleware: rate limiting, CORS, and security headers.
  */
 
 import { createServer, IncomingMessage, ServerResponse } from 'http';
 import { URL } from 'url';
+import { defaultRateLimiter } from './middleware/rate-limiter.js';
+import { defaultCorsHandler } from './middleware/cors.js';
+import { defaultSecurityHeaders } from './middleware/security-headers.js';
+import { metrics } from '../metrics/index.js';
 
 type RouteHandler = (
   req: IncomingMessage,
@@ -65,30 +70,111 @@ export class ApiServer {
   start(): Promise<void> {
     return new Promise((resolve) => {
       const server = createServer(async (req, res) => {
-        // CORS headers
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+        // Get client IP for rate limiting
+        const clientIp = this.getClientIp(req);
+        const origin = req.headers.origin;
 
+        // Apply security headers
+        defaultSecurityHeaders.apply(res);
+
+        // Apply CORS headers
+        defaultCorsHandler.applyHeaders(res, origin);
+
+        // Handle preflight requests
         if (req.method === 'OPTIONS') {
-          res.writeHead(204);
-          res.end();
+          defaultCorsHandler.handlePreflight(res, origin);
           return;
         }
 
+        // Check rate limit
+        const rateLimit = defaultRateLimiter.check(clientIp);
+        const rateLimitHeaders = defaultRateLimiter.getHeaders(rateLimit);
+
+        // Apply rate limit headers
+        for (const [key, value] of Object.entries(rateLimitHeaders)) {
+          res.setHeader(key, value);
+        }
+
+        // Block if rate limited
+        if (!rateLimit.allowed) {
+          metrics.incCounter('http_requests_total', {
+            method: req.method || 'GET',
+            path: 'rate_limited',
+            status: '429',
+          });
+          this.sendJson(res, 429, {
+            error: defaultRateLimiter.getMessage(),
+            retryAfter: Math.ceil((rateLimit.resetTime - Date.now()) / 1000),
+          });
+          return;
+        }
+
+        // Track in-flight requests
+        metrics.incGauge('http_requests_in_flight');
+        const endTimer = metrics.startTimer('http_request_duration_ms', {
+          method: req.method || 'GET',
+          path: this.normalizePath(req.url || '/'),
+        });
+
         try {
           await this.handleRequest(req, res);
+          metrics.incCounter('http_requests_total', {
+            method: req.method || 'GET',
+            path: this.normalizePath(req.url || '/'),
+            status: String(res.statusCode),
+          });
         } catch (error) {
           console.error('[API] Request error:', error);
+          metrics.incCounter('http_requests_total', {
+            method: req.method || 'GET',
+            path: this.normalizePath(req.url || '/'),
+            status: '500',
+          });
           this.sendJson(res, 500, { error: 'Internal server error' });
+        } finally {
+          endTimer();
+          metrics.decGauge('http_requests_in_flight');
         }
       });
 
       server.listen(this.port, () => {
         console.log(`[API] Server running on http://localhost:${this.port}`);
+        console.log(`[API] Rate limit: ${process.env.RATE_LIMIT_MAX_REQUESTS || 100} requests per minute`);
         resolve();
       });
     });
+  }
+
+  /**
+   * Normalize path for metrics (remove IDs to reduce cardinality)
+   */
+  private normalizePath(url: string): string {
+    const path = url.split('?')[0];
+    // Replace numeric IDs and UUIDs with :id placeholder
+    return path
+      .replace(/\/\d+/g, '/:id')
+      .replace(/\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/gi, '/:id');
+  }
+
+  /**
+   * Extract client IP from request
+   */
+  private getClientIp(req: IncomingMessage): string {
+    // Check X-Forwarded-For header (for proxies)
+    const forwarded = req.headers['x-forwarded-for'];
+    if (forwarded) {
+      const ips = Array.isArray(forwarded) ? forwarded[0] : forwarded;
+      return ips.split(',')[0].trim();
+    }
+
+    // Check X-Real-IP header
+    const realIp = req.headers['x-real-ip'];
+    if (realIp) {
+      return Array.isArray(realIp) ? realIp[0] : realIp;
+    }
+
+    // Fall back to socket remote address
+    return req.socket.remoteAddress || 'unknown';
   }
 
   private async handleRequest(req: IncomingMessage, res: ServerResponse): Promise<void> {

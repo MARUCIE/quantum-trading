@@ -1,0 +1,299 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - link "Skip to main content" [ref=e2]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - navigation "Main navigation" [ref=e4]:
+      - generic [ref=e5]:
+        - img [ref=e7]
+        - generic [ref=e11]: Quantum X
+      - navigation "Primary" [ref=e12]:
+        - link "Overview" [ref=e13]:
+          - /url: /
+          - button "Overview" [ref=e14]:
+            - img
+            - text: Overview
+        - link "Strategies" [ref=e15]:
+          - /url: /strategies
+          - button "Strategies" [ref=e16]:
+            - img
+            - text: Strategies
+        - link "Backtest" [ref=e17]:
+          - /url: /backtest
+          - button "Backtest" [ref=e18]:
+            - img
+            - text: Backtest
+        - link "Optimizer" [ref=e19]:
+          - /url: /optimizer
+          - button "Optimizer" [ref=e20]:
+            - img
+            - text: Optimizer
+        - link "MTF Analysis" [ref=e21]:
+          - /url: /mtf
+          - button "MTF Analysis" [ref=e22]:
+            - img
+            - text: MTF Analysis
+        - link "Trading" [ref=e23]:
+          - /url: /trading
+          - button "Trading" [ref=e24]:
+            - img
+            - text: Trading
+        - link "Risk Management" [ref=e25]:
+          - /url: /risk
+          - button "Risk Management" [ref=e26]:
+            - img
+            - text: Risk Management
+        - link "Copy Trading" [ref=e27]:
+          - /url: /copy
+          - button "Copy Trading" [ref=e28]:
+            - img
+            - text: Copy Trading
+        - link "Allocation" [ref=e29]:
+          - /url: /allocation
+          - button "Allocation" [ref=e30]:
+            - img
+            - text: Allocation
+        - link "Trading Journal" [ref=e31]:
+          - /url: /journal
+          - button "Trading Journal" [ref=e32]:
+            - img
+            - text: Trading Journal
+        - link "Correlation" [ref=e33]:
+          - /url: /correlation
+          - button "Correlation" [ref=e34]:
+            - img
+            - text: Correlation
+        - link "Position Sizing" [ref=e35]:
+          - /url: /position-sizing
+          - button "Position Sizing" [ref=e36]:
+            - img
+            - text: Position Sizing
+        - link "Compare" [ref=e37]:
+          - /url: /compare
+          - button "Compare" [ref=e38]:
+            - img
+            - text: Compare
+        - link "Order Book" [ref=e39]:
+          - /url: /orderbook
+          - button "Order Book" [ref=e40]:
+            - img
+            - text: Order Book
+        - link "P&L Calendar" [ref=e41]:
+          - /url: /pnl-calendar
+          - button "P&L Calendar" [ref=e42]:
+            - img
+            - text: P&L Calendar
+        - link "Signals" [ref=e43]:
+          - /url: /signals
+          - button "Signals" [ref=e44]:
+            - img
+            - text: Signals
+        - link "Scanner" [ref=e45]:
+          - /url: /scanner
+          - button "Scanner" [ref=e46]:
+            - img
+            - text: Scanner
+        - link "Watchlist" [ref=e47]:
+          - /url: /watchlist
+          - button "Watchlist" [ref=e48]:
+            - img
+            - text: Watchlist
+        - link "Calendar" [ref=e49]:
+          - /url: /calendar
+          - button "Calendar" [ref=e50]:
+            - img
+            - text: Calendar
+        - link "Attribution" [ref=e51]:
+          - /url: /attribution
+          - button "Attribution" [ref=e52]:
+            - img
+            - text: Attribution
+        - link "Replay" [ref=e53]:
+          - /url: /replay
+          - button "Replay" [ref=e54]:
+            - img
+            - text: Replay
+        - link "ML Models" [ref=e55]:
+          - /url: /ml-models
+          - button "ML Models" [ref=e56]:
+            - img
+            - text: ML Models
+        - link "Features" [ref=e57]:
+          - /url: /feature-importance
+          - button "Features" [ref=e58]:
+            - img
+            - text: Features
+        - link "Generator" [ref=e59]:
+          - /url: /strategy-generator
+          - button "Generator" [ref=e60]:
+            - img
+            - text: Generator
+        - link "ML Backtest" [ref=e61]:
+          - /url: /model-backtest
+          - button "ML Backtest" [ref=e62]:
+            - img
+            - text: ML Backtest
+        - link "Exchanges" [ref=e63]:
+          - /url: /exchanges
+          - button "Exchanges" [ref=e64]:
+            - img
+            - text: Exchanges
+        - link "Compare" [ref=e65]:
+          - /url: /exchange-compare
+          - button "Compare" [ref=e66]:
+            - img
+            - text: Compare
+        - link "Routing" [ref=e67]:
+          - /url: /smart-routing
+          - button "Routing" [ref=e68]:
+            - img
+            - text: Routing
+        - link "Arbitrage" [ref=e69]:
+          - /url: /arbitrage
+          - button "Arbitrage" [ref=e70]:
+            - img
+            - text: Arbitrage
+        - link "Config" [ref=e71]:
+          - /url: /config
+          - button "Config" [ref=e72]:
+            - img
+            - text: Config
+        - link "Infrastructure" [ref=e73]:
+          - /url: /infrastructure
+          - button "Infrastructure" [ref=e74]:
+            - img
+            - text: Infrastructure
+        - link "Monitoring" [ref=e75]:
+          - /url: /monitoring
+          - button "Monitoring" [ref=e76]:
+            - img
+            - text: Monitoring
+        - link "Notifications" [ref=e77]:
+          - /url: /notifications
+          - button "Notifications" [ref=e78]:
+            - img
+            - text: Notifications
+        - link "Preferences" [ref=e79]:
+          - /url: /preferences
+          - button "Preferences" [ref=e80]:
+            - img
+            - text: Preferences
+        - link "Dashboard Builder" [ref=e81]:
+          - /url: /dashboard-builder
+          - button "Dashboard Builder" [ref=e82]:
+            - img
+            - text: Dashboard Builder
+        - link "Portfolio" [ref=e83]:
+          - /url: /portfolio-analytics
+          - button "Portfolio" [ref=e84]:
+            - img
+            - text: Portfolio
+        - link "Trade Stats" [ref=e85]:
+          - /url: /trade-stats
+          - button "Trade Stats" [ref=e86]:
+            - img
+            - text: Trade Stats
+        - link "Leaderboard" [ref=e87]:
+          - /url: /leaderboard
+          - button "Leaderboard" [ref=e88]:
+            - img
+            - text: Leaderboard
+        - link "Marketplace" [ref=e89]:
+          - /url: /marketplace
+          - button "Marketplace" [ref=e90]:
+            - img
+            - text: Marketplace
+        - link "Mobile" [ref=e91]:
+          - /url: /mobile
+          - button "Mobile" [ref=e92]:
+            - img
+            - text: Mobile
+      - navigation "Secondary" [ref=e93]:
+        - link "Alerts" [ref=e94]:
+          - /url: /alerts
+          - button "Alerts" [ref=e95]:
+            - img
+            - text: Alerts
+        - link "API Keys" [ref=e96]:
+          - /url: /api-keys
+          - button "API Keys" [ref=e97]:
+            - img
+            - text: API Keys
+        - link "Audit Log" [ref=e98]:
+          - /url: /audit
+          - button "Audit Log" [ref=e99]:
+            - img
+            - text: Audit Log
+        - link "Settings" [ref=e100]:
+          - /url: /settings
+          - button "Settings" [ref=e101]:
+            - img
+            - text: Settings
+      - region "User info" [ref=e102]:
+        - generic [ref=e103]:
+          - generic [ref=e105]: QX
+          - generic [ref=e106]:
+            - paragraph [ref=e107]: Quantum X
+            - paragraph [ref=e108]: Paper Trading
+    - generic [ref=e109]:
+      - banner [ref=e110]:
+        - search [ref=e112]:
+          - img [ref=e113]
+          - searchbox "Search strategies and assets" [ref=e116]
+          - generic [ref=e117]: /
+        - group "Actions" [ref=e118]:
+          - button "Cryptocurrency" [ref=e120]:
+            - img
+            - generic [ref=e121]: Cryptocurrency
+            - img
+          - 'status "Market status: Open" [ref=e122]':
+            - generic [ref=e126]: Markets Open
+          - button "Notifications, 3 unread" [ref=e127]:
+            - img
+            - generic [ref=e128]: "3"
+          - button "Switch language" [ref=e129]:
+            - img
+            - generic [ref=e130]: Switch language
+          - button "Toggle theme" [ref=e131]:
+            - img
+            - generic [ref=e132]: Toggle theme
+      - main [active] [ref=e133]:
+        - generic [ref=e134]:
+          - generic [ref=e135]:
+            - generic [ref=e136]: Q
+            - heading "Quantum X" [level=1] [ref=e137]
+            - paragraph [ref=e138]: AI-Native Quantitative Trading Platform
+          - generic [ref=e140]:
+            - generic [ref=e141]:
+              - heading "Forgot your password?" [level=2] [ref=e142]
+              - paragraph [ref=e143]: No worries, we'll send you reset instructions
+            - generic [ref=e144]:
+              - img [ref=e145]
+              - generic [ref=e147]: Please enter your email address
+            - generic [ref=e148]:
+              - generic [ref=e149]:
+                - text: Email
+                - generic [ref=e150]:
+                  - img [ref=e151]
+                  - textbox "Email" [ref=e154]:
+                    - /placeholder: name@example.com
+              - button "Send reset link" [ref=e155]
+            - paragraph [ref=e156]:
+              - link "Back to login" [ref=e157]:
+                - /url: /login
+                - img [ref=e158]
+                - text: Back to login
+          - paragraph [ref=e161]:
+            - text: By continuing, you agree to our
+            - link "Terms of Service" [ref=e162]:
+              - /url: /terms
+            - text: and
+            - link "Privacy Policy" [ref=e163]:
+              - /url: /privacy
+  - generic "Notifications"
+  - button "Open Next.js Dev Tools" [ref=e169] [cursor=pointer]:
+    - img [ref=e170]
+  - alert [ref=e175]
+```

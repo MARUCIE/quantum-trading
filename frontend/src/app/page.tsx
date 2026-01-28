@@ -6,27 +6,88 @@ import { StatsCard } from "@/components/dashboard/stats-card";
 import { PositionsTable } from "@/components/dashboard/positions-table";
 import { RecentTrades } from "@/components/dashboard/recent-trades";
 import { CandlestickChart } from "@/components/charts/candlestick-chart";
-import { usePortfolioStore } from "@/lib/stores/portfolio-store";
-import { useStrategyStore } from "@/lib/stores/strategy-store";
-import {
-  generateMockCandlestickData,
-  mockRecentTrades,
-  mockAllocation,
-} from "@/lib/mock-data";
+import { EmptyState } from "@/components/ui/empty-state";
+import { useMemo } from "react";
+import { useKlines, usePortfolioStats, useRecentTrades, useStrategies } from "@/lib/api/hooks";
+import { useAssetClass, getPositionsByClass, type AssetClass } from "@/lib/assets";
 import {
   Wallet,
   TrendingUp,
   Activity,
   ArrowUpRight,
   ArrowDownRight,
+  LayoutDashboard,
 } from "lucide-react";
-import { useMemo } from "react";
+import { PageHeader } from "@/components/ui/page-header";
+import { StatusIndicator } from "@/components/ui/status-indicator";
+import { useTranslations } from "next-intl";
+
+// Default chart symbols per asset class
+const DEFAULT_SYMBOLS: Record<AssetClass, string> = {
+  crypto: 'BTC/USDT',
+  stocks: 'AAPL',
+  futures: 'ES',
+  options: 'SPY',
+};
 
 export default function OverviewPage() {
-  const { stats, positions } = usePortfolioStore();
-  const { strategies } = useStrategyStore();
+  const t = useTranslations("dashboard");
+  const tAsset = useTranslations("assetClass");
+  const { assetClass } = useAssetClass();
 
-  const chartData = useMemo(() => generateMockCandlestickData(90), []);
+  const { data: stats } = usePortfolioStats();
+  const { data: strategies } = useStrategies();
+
+  // Get positions based on selected asset class
+  const positions = useMemo(() => {
+    const assetPositions = getPositionsByClass(assetClass);
+    // Convert MultiAssetPosition to Position format for table
+    return assetPositions.map(p => ({
+      symbol: p.symbol,
+      side: p.side,
+      quantity: p.quantity,
+      entryPrice: p.entryPrice,
+      currentPrice: p.currentPrice,
+      markPrice: p.currentPrice, // Use current price as mark price
+      unrealizedPnl: p.unrealizedPnl,
+      unrealizedPnlPct: p.unrealizedPnlPct,
+      leverage: p.leverage ?? 1,
+      marginUsed: p.marginUsed ?? (p.entryPrice * p.quantity / (p.leverage ?? 1)),
+    }));
+  }, [assetClass]);
+
+  // Get chart symbol based on asset class
+  const chartSymbol = DEFAULT_SYMBOLS[assetClass];
+  const chartApiSymbol = assetClass === 'crypto' ? 'BTCUSDT' : chartSymbol;
+
+  const { data: klines } = useKlines(chartApiSymbol, "1d", 200);
+  const { data: marketTrades } = useRecentTrades(chartApiSymbol, 10);
+
+  const chartData = useMemo(() => {
+    if (!klines) return [];
+    return klines.map((bar) => ({
+      time: Math.floor(bar.timestamp / 1000),
+      open: bar.open,
+      high: bar.high,
+      low: bar.low,
+      close: bar.close,
+    }));
+  }, [klines]);
+
+  const allocation = useMemo(() => {
+    if (positions.length === 0) return [];
+    const total = positions.reduce(
+      (sum, p) => sum + p.currentPrice * p.quantity,
+      0
+    );
+    if (total <= 0) return [];
+    const colors = ["#22c55e", "#3b82f6", "#f59e0b", "#ec4899", "#8b5cf6"];
+    return positions.map((position, index) => ({
+      name: position.symbol,
+      value: ((position.currentPrice * position.quantity) / total) * 100,
+      color: colors[index % colors.length],
+    }));
+  }, [positions]);
 
   const formatCurrency = (value: number) =>
     new Intl.NumberFormat("en-US", {
@@ -35,48 +96,48 @@ export default function OverviewPage() {
       minimumFractionDigits: 2,
     }).format(value);
 
-  const activeStrategies = strategies.filter((s) => s.status === "active");
-  const totalStrategyPnl = strategies.reduce((sum, s) => sum + s.pnl, 0);
+  const strategyList = strategies ?? [];
+  const activeStrategies = strategyList.filter((s) => s.status === "active");
+  const totalStrategyPnl = strategyList.reduce((sum, s) => sum + s.pnl, 0);
 
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
-        <p className="text-muted-foreground">
-          Overview of your portfolio and trading activity
-        </p>
-      </div>
+      <PageHeader
+        title={t("title")}
+        description={t("description")}
+        icon={LayoutDashboard}
+      />
 
       {/* Stats Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 stagger-children">
         <StatsCard
-          title="Total Portfolio Value"
-          value={formatCurrency(stats.totalValue)}
-          change={stats.totalPnlPercent}
-          changeLabel="all time"
+          title={t("totalPortfolioValue")}
+          value={formatCurrency(stats?.totalValue ?? 0)}
+          change={stats?.totalPnlPercent ?? 0}
+          changeLabel={t("allTime")}
           icon={Wallet}
-          trend={stats.totalPnl >= 0 ? "up" : "down"}
+          trend={(stats?.totalPnl ?? 0) >= 0 ? "up" : "down"}
         />
         <StatsCard
-          title="Today's P&L"
-          value={formatCurrency(stats.dayPnl)}
-          change={stats.dayPnlPercent}
-          changeLabel="vs yesterday"
-          icon={stats.dayPnl >= 0 ? ArrowUpRight : ArrowDownRight}
-          trend={stats.dayPnl >= 0 ? "up" : "down"}
+          title={t("todaysPnl")}
+          value={formatCurrency(stats?.dayPnl ?? 0)}
+          change={stats?.dayPnlPercent ?? 0}
+          changeLabel={t("vsYesterday")}
+          icon={(stats?.dayPnl ?? 0) >= 0 ? ArrowUpRight : ArrowDownRight}
+          trend={(stats?.dayPnl ?? 0) >= 0 ? "up" : "down"}
         />
         <StatsCard
-          title="Active Strategies"
+          title={t("activeStrategies")}
           value={activeStrategies.length}
           icon={Activity}
           trend="neutral"
         />
         <StatsCard
-          title="Strategy P&L"
+          title={t("strategyPnl")}
           value={formatCurrency(totalStrategyPnl)}
           change={(totalStrategyPnl / 100000) * 100}
-          changeLabel="realized"
+          changeLabel={t("realized")}
           icon={TrendingUp}
           trend={totalStrategyPnl >= 0 ? "up" : "down"}
         />
@@ -87,7 +148,7 @@ export default function OverviewPage() {
         {/* Chart Section */}
         <Card className="lg:col-span-2">
           <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle>BTC/USDT</CardTitle>
+            <CardTitle>{chartSymbol}</CardTitle>
             <Tabs defaultValue="1D" className="w-auto">
               <TabsList className="h-8">
                 <TabsTrigger value="1H" className="text-xs">
@@ -106,43 +167,59 @@ export default function OverviewPage() {
             </Tabs>
           </CardHeader>
           <CardContent>
-            <CandlestickChart data={chartData} height={350} />
+            {chartData.length > 0 ? (
+              <CandlestickChart data={chartData as any} height={350} />
+            ) : (
+              <EmptyState
+                size="sm"
+                title={t("noMarketData")}
+                description={t("marketDataDesc")}
+              />
+            )}
           </CardContent>
         </Card>
 
         {/* Allocation */}
         <Card>
           <CardHeader>
-            <CardTitle>Asset Allocation</CardTitle>
+            <CardTitle>{t("assetAllocation")}</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
-              {mockAllocation.map((asset) => (
-                <div key={asset.name} className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div
-                        className="h-3 w-3 rounded-full"
-                        style={{ backgroundColor: asset.color }}
-                      />
-                      <span className="text-sm font-medium">{asset.name}</span>
+            {allocation.length > 0 ? (
+              <div className="space-y-4">
+                {allocation.map((asset) => (
+                  <div key={asset.name} className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <div
+                          className="h-3 w-3 rounded-full"
+                          style={{ backgroundColor: asset.color }}
+                        />
+                        <span className="text-sm font-medium">{asset.name}</span>
+                      </div>
+                      <span className="text-sm text-muted-foreground">
+                        {asset.value.toFixed(2)}%
+                      </span>
                     </div>
-                    <span className="text-sm text-muted-foreground">
-                      {asset.value}%
-                    </span>
+                    <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
+                      <div
+                        className="h-full rounded-full transition-all"
+                        style={{
+                          width: `${asset.value}%`,
+                          backgroundColor: asset.color,
+                        }}
+                      />
+                    </div>
                   </div>
-                  <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
-                    <div
-                      className="h-full rounded-full transition-all"
-                      style={{
-                        width: `${asset.value}%`,
-                        backgroundColor: asset.color,
-                      }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <EmptyState
+                size="sm"
+                title={t("noAllocationData")}
+                description={t("allocationDataDesc")}
+              />
+            )}
           </CardContent>
         </Card>
       </div>
@@ -152,20 +229,36 @@ export default function OverviewPage() {
         {/* Positions */}
         <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle>Open Positions</CardTitle>
+            <CardTitle>{t("openPositions")}</CardTitle>
           </CardHeader>
           <CardContent>
-            <PositionsTable positions={positions} />
+            {positions.length > 0 ? (
+              <PositionsTable positions={positions} />
+            ) : (
+              <EmptyState
+                size="sm"
+                title={t("noOpenPositions")}
+                description={t("positionsDesc")}
+              />
+            )}
           </CardContent>
         </Card>
 
         {/* Recent Trades */}
         <Card>
           <CardHeader>
-            <CardTitle>Recent Trades</CardTitle>
+            <CardTitle>{t("recentTrades")}</CardTitle>
           </CardHeader>
           <CardContent>
-            <RecentTrades trades={mockRecentTrades} />
+            {marketTrades && marketTrades.length > 0 ? (
+              <RecentTrades trades={marketTrades} />
+            ) : (
+              <EmptyState
+                size="sm"
+                title={t("noRecentTrades")}
+                description={t("tradesDesc")}
+              />
+            )}
           </CardContent>
         </Card>
       </div>
@@ -173,25 +266,28 @@ export default function OverviewPage() {
       {/* Strategy Performance */}
       <Card>
         <CardHeader>
-          <CardTitle>Strategy Performance</CardTitle>
+          <CardTitle>{t("strategyPerformance")}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {strategies.map((strategy) => (
+            {strategyList.map((strategy) => (
               <div
                 key={strategy.id}
                 className="rounded-lg border border-border p-4"
               >
                 <div className="flex items-center justify-between">
                   <h4 className="font-medium truncate">{strategy.name}</h4>
-                  <span
-                    className={`h-2 w-2 rounded-full ${
+                  <StatusIndicator
+                    status={
                       strategy.status === "active"
-                        ? "bg-green-500"
+                        ? "online"
                         : strategy.status === "paused"
-                          ? "bg-yellow-500"
-                          : "bg-red-500"
-                    }`}
+                          ? "warning"
+                          : "offline"
+                    }
+                    variant="dot"
+                    pulse={strategy.status === "active"}
+                    size="sm"
                   />
                 </div>
                 <p className="mt-1 text-xs text-muted-foreground">
@@ -215,7 +311,7 @@ export default function OverviewPage() {
                     <p className="text-sm font-medium">
                       {strategy.sharpeRatio.toFixed(2)}
                     </p>
-                    <p className="text-xs text-muted-foreground">Sharpe</p>
+                    <p className="text-xs text-muted-foreground">{t("sharpe")}</p>
                   </div>
                 </div>
               </div>

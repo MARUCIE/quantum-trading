@@ -2,7 +2,6 @@
   "name": "quantum-x-backend",
   "version": "0.1.0",
   "description": "Quantum X Trading System - Backend",
-  "type": "module",
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
@@ -10,7 +9,10 @@
     "start": "node dist/index.js",
     "test": "vitest",
     "lint": "eslint src --ext .ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "load-test": "tsx scripts/load-test.ts",
+    "load-test:health": "tsx scripts/load-test.ts /api/health 50 500",
+    "load-test:portfolio": "tsx scripts/load-test.ts /api/portfolio 20 200"
   },
   "dependencies": {
     "ws": "^8.18.0",

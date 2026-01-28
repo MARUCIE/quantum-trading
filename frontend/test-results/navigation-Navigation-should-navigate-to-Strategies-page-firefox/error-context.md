@@ -1,0 +1,397 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - navigation "Main navigation" [ref=e4]:
+      - generic [ref=e5]:
+        - img [ref=e7]
+        - generic [ref=e15]: Quantum X
+      - navigation "Primary" [ref=e16]:
+        - link "Overview" [ref=e17] [cursor=pointer]:
+          - /url: /
+          - button "Overview" [ref=e18]:
+            - img
+            - text: Overview
+        - link "Strategies" [ref=e19] [cursor=pointer]:
+          - /url: /strategies
+          - button "Strategies" [active] [ref=e20]:
+            - img
+            - text: Strategies
+        - link "Backtest" [ref=e21] [cursor=pointer]:
+          - /url: /backtest
+          - button "Backtest" [ref=e22]:
+            - img
+            - text: Backtest
+        - link "Optimizer" [ref=e23] [cursor=pointer]:
+          - /url: /optimizer
+          - button "Optimizer" [ref=e24]:
+            - img
+            - text: Optimizer
+        - link "MTF Analysis" [ref=e25] [cursor=pointer]:
+          - /url: /mtf
+          - button "MTF Analysis" [ref=e26]:
+            - img
+            - text: MTF Analysis
+        - link "Trading" [ref=e27] [cursor=pointer]:
+          - /url: /trading
+          - button "Trading" [ref=e28]:
+            - img
+            - text: Trading
+        - link "Risk Management" [ref=e29] [cursor=pointer]:
+          - /url: /risk
+          - button "Risk Management" [ref=e30]:
+            - img
+            - text: Risk Management
+        - link "Copy Trading" [ref=e31] [cursor=pointer]:
+          - /url: /copy
+          - button "Copy Trading" [ref=e32]:
+            - img
+            - text: Copy Trading
+        - link "Allocation" [ref=e33] [cursor=pointer]:
+          - /url: /allocation
+          - button "Allocation" [ref=e34]:
+            - img
+            - text: Allocation
+        - link "Trading Journal" [ref=e35] [cursor=pointer]:
+          - /url: /journal
+          - button "Trading Journal" [ref=e36]:
+            - img
+            - text: Trading Journal
+        - link "Correlation" [ref=e37] [cursor=pointer]:
+          - /url: /correlation
+          - button "Correlation" [ref=e38]:
+            - img
+            - text: Correlation
+        - link "Position Sizing" [ref=e39] [cursor=pointer]:
+          - /url: /position-sizing
+          - button "Position Sizing" [ref=e40]:
+            - img
+            - text: Position Sizing
+        - link "Compare" [ref=e41] [cursor=pointer]:
+          - /url: /compare
+          - button "Compare" [ref=e42]:
+            - img
+            - text: Compare
+        - link "Order Book" [ref=e43] [cursor=pointer]:
+          - /url: /orderbook
+          - button "Order Book" [ref=e44]:
+            - img
+            - text: Order Book
+        - link "P&L Calendar" [ref=e45] [cursor=pointer]:
+          - /url: /pnl-calendar
+          - button "P&L Calendar" [ref=e46]:
+            - img
+            - text: P&L Calendar
+        - link "Signals" [ref=e47] [cursor=pointer]:
+          - /url: /signals
+          - button "Signals" [ref=e48]:
+            - img
+            - text: Signals
+        - link "Scanner" [ref=e49] [cursor=pointer]:
+          - /url: /scanner
+          - button "Scanner" [ref=e50]:
+            - img
+            - text: Scanner
+        - link "Watchlist" [ref=e51] [cursor=pointer]:
+          - /url: /watchlist
+          - button "Watchlist" [ref=e52]:
+            - img
+            - text: Watchlist
+        - link "Calendar" [ref=e53] [cursor=pointer]:
+          - /url: /calendar
+          - button "Calendar" [ref=e54]:
+            - img
+            - text: Calendar
+        - link "Attribution" [ref=e55] [cursor=pointer]:
+          - /url: /attribution
+          - button "Attribution" [ref=e56]:
+            - img
+            - text: Attribution
+        - link "Replay" [ref=e57] [cursor=pointer]:
+          - /url: /replay
+          - button "Replay" [ref=e58]:
+            - img
+            - text: Replay
+        - link "ML Models" [ref=e59] [cursor=pointer]:
+          - /url: /ml-models
+          - button "ML Models" [ref=e60]:
+            - img
+            - text: ML Models
+        - link "Features" [ref=e61] [cursor=pointer]:
+          - /url: /feature-importance
+          - button "Features" [ref=e62]:
+            - img
+            - text: Features
+        - link "Generator" [ref=e63] [cursor=pointer]:
+          - /url: /strategy-generator
+          - button "Generator" [ref=e64]:
+            - img
+            - text: Generator
+        - link "ML Backtest" [ref=e65] [cursor=pointer]:
+          - /url: /model-backtest
+          - button "ML Backtest" [ref=e66]:
+            - img
+            - text: ML Backtest
+        - link "Exchanges" [ref=e67] [cursor=pointer]:
+          - /url: /exchanges
+          - button "Exchanges" [ref=e68]:
+            - img
+            - text: Exchanges
+        - link "Compare" [ref=e69] [cursor=pointer]:
+          - /url: /exchange-compare
+          - button "Compare" [ref=e70]:
+            - img
+            - text: Compare
+        - link "Routing" [ref=e71] [cursor=pointer]:
+          - /url: /smart-routing
+          - button "Routing" [ref=e72]:
+            - img
+            - text: Routing
+        - link "Arbitrage" [ref=e73] [cursor=pointer]:
+          - /url: /arbitrage
+          - button "Arbitrage" [ref=e74]:
+            - img
+            - text: Arbitrage
+        - link "Config" [ref=e75] [cursor=pointer]:
+          - /url: /config
+          - button "Config" [ref=e76]:
+            - img
+            - text: Config
+        - link "Infrastructure" [ref=e77] [cursor=pointer]:
+          - /url: /infrastructure
+          - button "Infrastructure" [ref=e78]:
+            - img
+            - text: Infrastructure
+        - link "Monitoring" [ref=e79] [cursor=pointer]:
+          - /url: /monitoring
+          - button "Monitoring" [ref=e80]:
+            - img
+            - text: Monitoring
+        - link "Notifications" [ref=e81] [cursor=pointer]:
+          - /url: /notifications
+          - button "Notifications" [ref=e82]:
+            - img
+            - text: Notifications
+        - link "Preferences" [ref=e83] [cursor=pointer]:
+          - /url: /preferences
+          - button "Preferences" [ref=e84]:
+            - img
+            - text: Preferences
+        - link "Dashboard Builder" [ref=e85] [cursor=pointer]:
+          - /url: /dashboard-builder
+          - button "Dashboard Builder" [ref=e86]:
+            - img
+            - text: Dashboard Builder
+        - link "Portfolio" [ref=e87] [cursor=pointer]:
+          - /url: /portfolio-analytics
+          - button "Portfolio" [ref=e88]:
+            - img
+            - text: Portfolio
+        - link "Trade Stats" [ref=e89] [cursor=pointer]:
+          - /url: /trade-stats
+          - button "Trade Stats" [ref=e90]:
+            - img
+            - text: Trade Stats
+        - link "Leaderboard" [ref=e91] [cursor=pointer]:
+          - /url: /leaderboard
+          - button "Leaderboard" [ref=e92]:
+            - img
+            - text: Leaderboard
+        - link "Marketplace" [ref=e93] [cursor=pointer]:
+          - /url: /marketplace
+          - button "Marketplace" [ref=e94]:
+            - img
+            - text: Marketplace
+        - link "Mobile" [ref=e95] [cursor=pointer]:
+          - /url: /mobile
+          - button "Mobile" [ref=e96]:
+            - img
+            - text: Mobile
+      - navigation "Secondary" [ref=e97]:
+        - link "Alerts" [ref=e98] [cursor=pointer]:
+          - /url: /alerts
+          - button "Alerts" [ref=e99]:
+            - img
+            - text: Alerts
+        - link "API Keys" [ref=e100] [cursor=pointer]:
+          - /url: /api-keys
+          - button "API Keys" [ref=e101]:
+            - img
+            - text: API Keys
+        - link "Audit Log" [ref=e102] [cursor=pointer]:
+          - /url: /audit
+          - button "Audit Log" [ref=e103]:
+            - img
+            - text: Audit Log
+        - link "Settings" [ref=e104] [cursor=pointer]:
+          - /url: /settings
+          - button "Settings" [ref=e105]:
+            - img
+            - text: Settings
+      - region "User info" [ref=e106]:
+        - generic [ref=e107]:
+          - generic [ref=e109]: QX
+          - generic [ref=e110]:
+            - paragraph [ref=e111]: Quantum X
+            - paragraph [ref=e112]: Paper Trading
+    - generic [ref=e113]:
+      - banner [ref=e114]:
+        - search [ref=e116]:
+          - img [ref=e117]
+          - searchbox "Search strategies and assets" [ref=e120]
+          - generic [ref=e121]: /
+        - group "Actions" [ref=e122]:
+          - button "Cryptocurrency" [ref=e124]:
+            - img
+            - generic [ref=e125]: Cryptocurrency
+            - img
+          - 'status "Market status: Open" [ref=e126]':
+            - generic [ref=e130]: Markets Open
+          - button "Notifications, 3 unread" [ref=e131]:
+            - img
+            - generic [ref=e132]: "3"
+          - button "Switch language" [ref=e133]:
+            - img
+            - generic [ref=e134]: Switch language
+          - button "Toggle theme" [ref=e135]:
+            - img
+            - generic [ref=e136]: Toggle theme
+      - main [ref=e137]:
+        - generic [ref=e138]:
+          - generic [ref=e139]:
+            - generic [ref=e140]:
+              - heading "Strategies" [level=1] [ref=e141]
+              - paragraph [ref=e142]: Manage and monitor your trading strategies
+            - button "New Strategy" [ref=e143]:
+              - img
+              - text: New Strategy
+          - generic [ref=e144]:
+            - generic [ref=e145]:
+              - heading "Total Strategies" [level=3] [ref=e147]
+              - generic [ref=e149]: "3"
+            - generic [ref=e150]:
+              - heading "Active" [level=3] [ref=e152]
+              - generic [ref=e154]: "2"
+            - generic [ref=e155]:
+              - heading "Total P&L" [level=3] [ref=e157]
+              - generic [ref=e159]: $8,500.00
+            - generic [ref=e160]:
+              - heading "Total Trades" [level=3] [ref=e162]
+              - generic [ref=e164]: "205"
+          - generic [ref=e165]:
+            - heading "All Strategies" [level=3] [ref=e167]
+            - table [ref=e170]:
+              - rowgroup [ref=e171]:
+                - row "Name Type Status Symbols P&L Sharpe Max DD Win Rate Trades" [ref=e172]:
+                  - columnheader "Name" [ref=e173]
+                  - columnheader "Type" [ref=e174]
+                  - columnheader "Status" [ref=e175]
+                  - columnheader "Symbols" [ref=e176]
+                  - columnheader "P&L" [ref=e177]
+                  - columnheader "Sharpe" [ref=e178]
+                  - columnheader "Max DD" [ref=e179]
+                  - columnheader "Win Rate" [ref=e180]
+                  - columnheader "Trades" [ref=e181]
+                  - columnheader [ref=e182]
+              - rowgroup [ref=e183]:
+                - row "BTC Momentum Trend-following strategy for Bitcoin momentum Active BTC/USDT $5,250.00(+12.50%) 1.85 8.5% 62.0% 45" [ref=e184]:
+                  - cell "BTC Momentum Trend-following strategy for Bitcoin" [ref=e185]:
+                    - generic [ref=e186]:
+                      - paragraph [ref=e187]: BTC Momentum
+                      - paragraph [ref=e188]: Trend-following strategy for Bitcoin
+                  - cell "momentum" [ref=e189]:
+                    - generic [ref=e190]: momentum
+                  - cell "Active" [ref=e191]:
+                    - generic [ref=e192]: Active
+                  - cell "BTC/USDT" [ref=e193]:
+                    - generic [ref=e195]: BTC/USDT
+                  - cell "$5,250.00(+12.50%)" [ref=e196]:
+                    - generic [ref=e197]:
+                      - text: $5,250.00
+                      - generic [ref=e198]: (+12.50%)
+                  - cell "1.85" [ref=e199]
+                  - cell "8.5%" [ref=e200]
+                  - cell "62.0%" [ref=e201]
+                  - cell "45" [ref=e202]
+                  - cell [ref=e203]:
+                    - generic [ref=e204]:
+                      - button [ref=e205]:
+                        - img
+                      - button [ref=e206]:
+                        - img
+                      - button [ref=e207]:
+                        - img
+                - row "ETH Grid Trading Grid trading strategy for Ethereum grid Active ETH/USDT $1,850.00(+8.20%) 1.42 5.2% 71.0% 128" [ref=e208]:
+                  - cell "ETH Grid Trading Grid trading strategy for Ethereum" [ref=e209]:
+                    - generic [ref=e210]:
+                      - paragraph [ref=e211]: ETH Grid Trading
+                      - paragraph [ref=e212]: Grid trading strategy for Ethereum
+                  - cell "grid" [ref=e213]:
+                    - generic [ref=e214]: grid
+                  - cell "Active" [ref=e215]:
+                    - generic [ref=e216]: Active
+                  - cell "ETH/USDT" [ref=e217]:
+                    - generic [ref=e219]: ETH/USDT
+                  - cell "$1,850.00(+8.20%)" [ref=e220]:
+                    - generic [ref=e221]:
+                      - text: $1,850.00
+                      - generic [ref=e222]: (+8.20%)
+                  - cell "1.42" [ref=e223]
+                  - cell "5.2%" [ref=e224]
+                  - cell "71.0%" [ref=e225]
+                  - cell "128" [ref=e226]
+                  - cell [ref=e227]:
+                    - generic [ref=e228]:
+                      - button [ref=e229]:
+                        - img
+                      - button [ref=e230]:
+                        - img
+                      - button [ref=e231]:
+                        - img
+                - row "Multi-Asset Breakout Breakout strategy across multiple assets breakout Paused BTC/USDT ETH/USDT SOL/USDT $1,400.00(+5.80%) 1.15 12.3% 56.0% 32" [ref=e232]:
+                  - cell "Multi-Asset Breakout Breakout strategy across multiple assets" [ref=e233]:
+                    - generic [ref=e234]:
+                      - paragraph [ref=e235]: Multi-Asset Breakout
+                      - paragraph [ref=e236]: Breakout strategy across multiple assets
+                  - cell "breakout" [ref=e237]:
+                    - generic [ref=e238]: breakout
+                  - cell "Paused" [ref=e239]:
+                    - generic [ref=e240]: Paused
+                  - cell "BTC/USDT ETH/USDT SOL/USDT" [ref=e241]:
+                    - generic [ref=e242]:
+                      - generic [ref=e243]: BTC/USDT
+                      - generic [ref=e244]: ETH/USDT
+                      - generic [ref=e245]: SOL/USDT
+                  - cell "$1,400.00(+5.80%)" [ref=e246]:
+                    - generic [ref=e247]:
+                      - text: $1,400.00
+                      - generic [ref=e248]: (+5.80%)
+                  - cell "1.15" [ref=e249]
+                  - cell "12.3%" [ref=e250]
+                  - cell "56.0%" [ref=e251]
+                  - cell "32" [ref=e252]
+                  - cell [ref=e253]:
+                    - generic [ref=e254]:
+                      - button [ref=e255]:
+                        - img
+                      - button [ref=e256]:
+                        - img
+                      - button [ref=e257]:
+                        - img
+  - generic "Notifications"
+  - generic [ref=e262] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e263]:
+      - img [ref=e264]
+    - generic [ref=e268]:
+      - button "Open issues overlay" [ref=e269]:
+        - generic [ref=e270]:
+          - generic [ref=e271]: "0"
+          - generic [ref=e272]: "1"
+        - generic [ref=e273]: Issue
+      - button "Collapse issues badge" [ref=e274]:
+        - img [ref=e275]
+  - alert [ref=e277]
+```

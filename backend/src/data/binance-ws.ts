@@ -6,9 +6,8 @@
  */
 
 import WebSocket from 'ws';
-import type { OHLCVBar, Ticker, Trade, KlineInterval } from '../types/market';
-
-const BINANCE_SPOT_WS = 'wss://stream.binance.com:9443';
+import type { OHLCVBar, Ticker, Trade, OrderBook, KlineInterval } from '../types/market';
+import { binanceConfig } from './binance-config.js';
 
 type StreamType = 'kline' | 'ticker' | 'trade' | 'depth';
 
@@ -41,11 +40,11 @@ export class BinanceWebSocket {
         return;
       }
 
-      const url = `${BINANCE_SPOT_WS}/stream?streams=${streamNames.join('/')}`;
+      const url = `${binanceConfig.ws.stream}/stream?streams=${streamNames.join('/')}`;
       this.ws = new WebSocket(url);
 
       this.ws.on('open', () => {
-        console.log('[BinanceWS] Connected');
+        console.log(`[BinanceWS] Connected to ${binanceConfig.isTestnet ? 'TESTNET' : 'PRODUCTION'}`);
         this.isConnected = true;
         this.reconnectAttempts = 0;
         this.startPing();
@@ -107,6 +106,23 @@ export class BinanceWebSocket {
   }
 
   /**
+   * Subscribe to order book depth stream
+   * @param levels - Number of price levels (5, 10, or 20)
+   * @param updateSpeed - Update speed in ms (100 or 1000)
+   */
+  subscribeDepth(
+    symbol: string,
+    callback: DataCallback<OrderBook>,
+    levels: 5 | 10 | 20 = 10,
+    updateSpeed: 100 | 1000 = 100
+  ): string {
+    const streamName = `${symbol.toLowerCase()}@depth${levels}@${updateSpeed}ms`;
+    this.streams.set(streamName, { symbol, type: 'depth' });
+    this.addCallback(streamName, callback);
+    return streamName;
+  }
+
+  /**
    * Unsubscribe from a stream
    */
   unsubscribe(streamName: string): void {
@@ -155,6 +171,9 @@ export class BinanceWebSocket {
           break;
         case 'trade':
           transformed = this.transformTrade(data, config.symbol);
+          break;
+        case 'depth':
+          transformed = this.transformDepth(data, config.symbol);
           break;
         default:
           return;
@@ -207,6 +226,23 @@ export class BinanceWebSocket {
       quantity: parseFloat(data.q),
       side: data.m ? 'sell' : 'buy',
       tradeId: String(data.t),
+    };
+  }
+
+  private transformDepth(data: any, symbol: string): OrderBook {
+    return {
+      timestamp: Date.now(),
+      symbol: symbol.toUpperCase(),
+      exchange: 'binance',
+      bids: data.bids.map(([price, size]: [string, string]) => ({
+        price: parseFloat(price),
+        size: parseFloat(size),
+      })),
+      asks: data.asks.map(([price, size]: [string, string]) => ({
+        price: parseFloat(price),
+        size: parseFloat(size),
+      })),
+      lastUpdateId: data.lastUpdateId,
     };
   }
 

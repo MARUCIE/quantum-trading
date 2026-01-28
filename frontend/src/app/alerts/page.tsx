@@ -3,51 +3,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Bell, AlertTriangle, Info, CheckCircle, Plus } from "lucide-react";
+import { AlertTriangle, Info, CheckCircle, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const alerts = [
-  {
-    id: "1",
-    type: "warning",
-    title: "Position Concentration Warning",
-    message: "BTC position at 45% of portfolio, approaching 50% limit",
-    time: "2 min ago",
-    read: false,
-  },
-  {
-    id: "2",
-    type: "info",
-    title: "Strategy Started",
-    message: "ETH Mean Reversion strategy has been activated",
-    time: "15 min ago",
-    read: false,
-  },
-  {
-    id: "3",
-    type: "success",
-    title: "Order Filled",
-    message: "Buy order for 0.5 BTC filled at $43,245.50",
-    time: "32 min ago",
-    read: true,
-  },
-  {
-    id: "4",
-    type: "warning",
-    title: "Drawdown Alert",
-    message: "ML Factor Model drawdown at 15.6%, exceeding threshold",
-    time: "1 hour ago",
-    read: true,
-  },
-  {
-    id: "5",
-    type: "info",
-    title: "Market Open",
-    message: "US markets are now open for trading",
-    time: "3 hours ago",
-    read: true,
-  },
-];
+import { useTranslations } from "next-intl";
 
 const alertConfig = {
   warning: {
@@ -71,6 +29,59 @@ const alertConfig = {
 };
 
 export default function AlertsPage() {
+  const t = useTranslations("alertsPage");
+
+  // Mock data with translation keys
+  const alerts = [
+    {
+      id: "1",
+      type: "warning",
+      titleKey: "positionConcentrationWarning",
+      messageKey: "positionConcentrationMessage",
+      time: t("minAgo", { count: 2 }),
+      read: false,
+    },
+    {
+      id: "2",
+      type: "info",
+      titleKey: "strategyStarted",
+      messageKey: "strategyStartedMessage",
+      time: t("minAgo", { count: 15 }),
+      read: false,
+    },
+    {
+      id: "3",
+      type: "success",
+      titleKey: "orderFilled",
+      messageKey: "orderFilledMessage",
+      time: t("minAgo", { count: 32 }),
+      read: true,
+    },
+    {
+      id: "4",
+      type: "warning",
+      titleKey: "drawdownAlert",
+      messageKey: "drawdownAlertMessage",
+      time: t("hourAgo", { count: 1 }),
+      read: true,
+    },
+    {
+      id: "5",
+      type: "info",
+      titleKey: "marketOpen",
+      messageKey: "marketOpenMessage",
+      time: t("hoursAgo", { count: 3 }),
+      read: true,
+    },
+  ];
+
+  const alertRules = [
+    { nameKey: "positionLimit", conditionKey: "positionLimitCondition", enabled: true },
+    { nameKey: "dailyLoss", conditionKey: "dailyLossCondition", enabled: true },
+    { nameKey: "drawdown", conditionKey: "drawdownCondition", enabled: true },
+    { nameKey: "priceAlert", conditionKey: "priceAlertCondition", enabled: false },
+  ];
+
   const unreadCount = alerts.filter((a) => !a.read).length;
 
   return (
@@ -78,16 +89,16 @@ export default function AlertsPage() {
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight">Alerts</h1>
+          <h1 className="text-2xl font-bold tracking-tight">{t("title")}</h1>
           <p className="text-muted-foreground">
-            {unreadCount} unread notifications
+            {t("unreadNotifications", { count: unreadCount })}
           </p>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline">Mark All Read</Button>
+          <Button variant="outline">{t("markAllRead")}</Button>
           <Button>
             <Plus className="mr-2 h-4 w-4" />
-            Create Alert
+            {t("createAlert")}
           </Button>
         </div>
       </div>
@@ -95,19 +106,19 @@ export default function AlertsPage() {
       {/* Alert Filters */}
       <div className="flex gap-2">
         <Button variant="secondary" size="sm">
-          All
+          {t("all")}
         </Button>
         <Button variant="ghost" size="sm">
           <AlertTriangle className="mr-1 h-3 w-3 text-yellow-500" />
-          Warnings
+          {t("warnings")}
         </Button>
         <Button variant="ghost" size="sm">
           <Info className="mr-1 h-3 w-3 text-blue-500" />
-          Info
+          {t("info")}
         </Button>
         <Button variant="ghost" size="sm">
           <CheckCircle className="mr-1 h-3 w-3 text-green-500" />
-          Success
+          {t("success")}
         </Button>
       </div>
 
@@ -137,20 +148,20 @@ export default function AlertsPage() {
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <h4 className="font-medium">{alert.title}</h4>
+                      <h4 className="font-medium">{t(alert.titleKey)}</h4>
                       {!alert.read && (
                         <span className="h-2 w-2 rounded-full bg-blue-500" />
                       )}
                     </div>
                     <p className="text-sm text-muted-foreground">
-                      {alert.message}
+                      {t(alert.messageKey)}
                     </p>
                     <p className="mt-1 text-xs text-muted-foreground">
                       {alert.time}
                     </p>
                   </div>
                   <Button variant="ghost" size="sm">
-                    Dismiss
+                    {t("dismiss")}
                   </Button>
                 </div>
               );
@@ -162,22 +173,17 @@ export default function AlertsPage() {
       {/* Alert Rules */}
       <Card>
         <CardHeader>
-          <CardTitle>Alert Rules</CardTitle>
+          <CardTitle>{t("alertRules")}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          {[
-            { name: "Position Limit", condition: "Position > 50% of portfolio", enabled: true },
-            { name: "Daily Loss", condition: "Daily P&L < -$5,000", enabled: true },
-            { name: "Drawdown", condition: "Drawdown > 10%", enabled: true },
-            { name: "Price Alert", condition: "BTC > $50,000", enabled: false },
-          ].map((rule) => (
+          {alertRules.map((rule) => (
             <div
-              key={rule.name}
+              key={rule.nameKey}
               className="flex items-center justify-between rounded-lg border border-border p-3"
             >
               <div>
-                <h4 className="font-medium">{rule.name}</h4>
-                <p className="text-xs text-muted-foreground">{rule.condition}</p>
+                <h4 className="font-medium">{t(rule.nameKey)}</h4>
+                <p className="text-xs text-muted-foreground">{t(rule.conditionKey)}</p>
               </div>
               <Badge
                 variant="outline"
@@ -187,7 +193,7 @@ export default function AlertsPage() {
                     : "border-muted-foreground/50 text-muted-foreground"
                 )}
               >
-                {rule.enabled ? "Active" : "Disabled"}
+                {rule.enabled ? t("active") : t("disabled")}
               </Badge>
             </div>
           ))}

@@ -1,0 +1,97 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - link "Skip to main content" [ref=e2]:
+    - /url: "#main-content"
+  - generic [ref=e4]:
+    - banner [ref=e5]:
+      - generic [ref=e6]:
+        - button "Toggle navigation menu" [ref=e7]:
+          - img
+          - generic [ref=e8]: Toggle navigation menu
+        - button "Open search" [ref=e9]:
+          - img
+      - group "Actions" [ref=e10]:
+        - 'status "Market status: Open" [ref=e11]'
+        - button "Notifications, 3 unread" [ref=e14]:
+          - img
+          - generic [ref=e15]: "3"
+        - button "Switch language" [ref=e16]:
+          - img
+          - generic [ref=e17]: Switch language
+        - button "Toggle theme" [ref=e18]:
+          - img
+          - generic [ref=e19]: Toggle theme
+    - main [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - generic [ref=e23]: Q
+          - heading "Quantum X" [level=1] [ref=e24]
+          - paragraph [ref=e25]: AI-Native Quantitative Trading Platform
+        - generic [ref=e27]:
+          - generic [ref=e28]:
+            - heading "Create an account" [level=2] [ref=e29]
+            - paragraph [ref=e30]: Start your trading journey today
+          - generic [ref=e31]:
+            - generic [ref=e32]:
+              - text: Full Name
+              - generic [ref=e33]:
+                - img [ref=e34]
+                - textbox "Full Name" [ref=e37]:
+                  - /placeholder: John Doe
+            - generic [ref=e38]:
+              - text: Email
+              - generic [ref=e39]:
+                - img [ref=e40]
+                - textbox "Email" [ref=e43]:
+                  - /placeholder: name@example.com
+            - generic [ref=e44]:
+              - text: Password
+              - generic [ref=e45]:
+                - img [ref=e46]
+                - textbox "Password" [active] [ref=e49]:
+                  - /placeholder: Create a strong password
+                  - text: abc
+                - button [ref=e50]:
+                  - img [ref=e51]
+            - generic [ref=e54]:
+              - text: Confirm Password
+              - generic [ref=e55]:
+                - img [ref=e56]
+                - textbox "Confirm Password" [ref=e59]:
+                  - /placeholder: Confirm your password
+            - generic [ref=e60]:
+              - checkbox "I agree to the Terms of Service and Privacy Policy" [ref=e61]
+              - generic [ref=e62]:
+                - text: I agree to the
+                - link "Terms of Service" [ref=e63]:
+                  - /url: /terms
+                - text: and
+                - link "Privacy Policy" [ref=e64]:
+                  - /url: /privacy
+            - button "Create account" [ref=e65]
+          - generic [ref=e70]: Or continue with
+          - generic [ref=e71]:
+            - button "Google" [ref=e72]:
+              - img
+              - text: Google
+            - button "GitHub" [ref=e73]:
+              - img
+              - text: GitHub
+          - paragraph [ref=e74]:
+            - text: Already have an account?
+            - link "Sign in" [ref=e75]:
+              - /url: /login
+        - paragraph [ref=e77]:
+          - text: By continuing, you agree to our
+          - link "Terms of Service" [ref=e78]:
+            - /url: /terms
+          - text: and
+          - link "Privacy Policy" [ref=e79]:
+            - /url: /privacy
+  - generic "Notifications"
+  - button "Open Next.js Dev Tools" [ref=e85] [cursor=pointer]:
+    - img [ref=e86]
+  - alert [ref=e91]
+```

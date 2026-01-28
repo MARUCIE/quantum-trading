@@ -31,7 +31,10 @@ export function StatsCard({
         : "text-muted-foreground";
 
   return (
-    <Card className={cn("relative overflow-hidden card-interactive", className)}>
+    <Card
+      className={cn("relative overflow-hidden card-interactive", className)}
+      data-testid="stats-card"
+    >
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-sm font-medium text-muted-foreground">
           {title}

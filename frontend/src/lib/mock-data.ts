@@ -1,12 +1,39 @@
 import { CandlestickData, Time } from "lightweight-charts";
 
+// Base prices for different symbols
+const SYMBOL_BASE_PRICES: Record<string, number> = {
+  // Crypto
+  "BTC/USDT": 43245.5,
+  "ETH/USDT": 2345.67,
+  "SOL/USDT": 98.45,
+  "BNB/USDT": 312.78,
+  // Stocks
+  "AAPL": 178.50,
+  "NVDA": 485.20,
+  "TSLA": 248.30,
+  "MSFT": 378.90,
+  "GOOGL": 141.25,
+  // Futures
+  "ES": 4785.25,
+  "NQ": 16892.50,
+  "CL": 78.45,
+  "GC": 2045.30,
+  "ZB": 118.75,
+  // Options (underlying prices)
+  "SPY": 478.50,
+  "QQQ": 405.20,
+  "IWM": 198.45,
+};
+
 // Generate mock OHLCV data
 export function generateMockCandlestickData(
-  days: number = 90
+  days: number = 90,
+  symbol?: string
 ): CandlestickData<Time>[] {
   const data: CandlestickData<Time>[] = [];
   const now = new Date();
-  let basePrice = 42000;
+  // Use symbol-specific base price or default to BTC-like price
+  let basePrice = symbol ? (SYMBOL_BASE_PRICES[symbol] || 42000) : 42000;
 
   for (let i = days; i >= 0; i--) {
     const date = new Date(now);

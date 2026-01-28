@@ -50,6 +50,32 @@ Related:
 | D36 | UI/UX: 微交互动画 | 卡片悬浮、按钮反馈、渐入动画 | code | frontend/src/app/globals.css (animations) |
 | D37 | UI/UX: 动画数字组件 | 数值变化动画、货币/百分比变体 | code | frontend/src/components/ui/animated-number.tsx |
 | D38 | UI/UX: 无障碍访问 (a11y) | Skip link、ARIA labels、键盘导航 | code | frontend/src/components/layout/skip-link.tsx |
+| D39 | UI/UX: 表单验证 | useFormValidation hook、FormField 组件、错误状态 | code | frontend/src/lib/hooks/use-form-validation.ts |
+| D40 | 性能优化 | next.config 优化、懒加载工具、Web Vitals 监控、预取工具 | code | frontend/next.config.ts, frontend/src/lib/lazy.tsx |
+| D41 | 单元测试 | Vitest 配置、41 个测试用例 | code | frontend/vitest.config.ts, frontend/src/**/*.test.ts |
+| D42 | E2E 测试 | Playwright 配置、导航/主题/设置/可访问性测试 | code | frontend/playwright.config.ts, frontend/e2e/*.spec.ts |
+| D43 | 文档 | README、部署指南、项目结构 | docs | frontend/README.md |
+| D44 | CI/CD | GitHub Actions 工作流（lint/test/build/e2e） | config | .github/workflows/ci.yml |
+| D45 | Docker | Dockerfile（多阶段构建）、docker-compose | config | frontend/Dockerfile, docker-compose.yml |
+| D46 | Backend Docker | 后端多阶段构建 Dockerfile | config | backend/Dockerfile |
+| D47 | 环境配置模板 | .env.example 完整配置说明 | config | .env.example |
+| D48 | Backend 单元测试 | Vitest 测试覆盖核心模块 | code | backend/src/**/*.test.ts |
+| D49 | API 文档 | OpenAPI/Swagger 规范 | docs | backend/docs/openapi.yaml |
+| D50 | 安全加固 | 速率限制、输入验证、CORS | code | backend/src/api/middleware/* |
+| D51 | WebSocket 服务器 | 实时数据广播、订阅管理 | code | backend/src/ws/* |
+| D52 | 前端 WebSocket 客户端 | 实时价格更新、自动重连 | code | frontend/src/lib/ws/* |
+| D53 | 实时交易页面 | 实时订单簿、成交记录 | code | frontend/src/app/trading/* |
+| D54 | Toast 通知系统 | 事件提醒、交易确认 | code | frontend/src/components/ui/toast/* |
+| D55 | WebSocket 集成测试 | E2E 实时测试 | code | frontend/e2e/websocket.spec.ts |
+| D56 | 测试工具包 (test-utils) | NextIntl Provider 包装、翻译消息配置 | code | frontend/src/test/test-utils.tsx |
+| D57 | PDCA-2 UI/UX 审计 | ui-skills/web-interface-guidelines 合规检查通过 | evidence | doc/00_project/initiative_quantum_x/notes.md |
+| D58 | PDCA-3 前端验证 | Build + 275 单元测试通过 | evidence | doc/00_project/initiative_quantum_x/notes.md |
+| D59 | PDCA-1 入口一致性 | REST/WS 契约对齐、架构文档路由表更新（5→47） | evidence | doc/00_project/initiative_quantum_x/notes.md, SYSTEM_ARCHITECTURE.md |
+| D60 | E2E 测试 Locale 修复 | Playwright storageState 添加 NEXT_LOCALE=en cookie | config | frontend/playwright.config.ts |
+| D61 | StatsCard testid | 添加 data-testid="stats-card" 支持 E2E 测试 | code | frontend/src/components/dashboard/stats-card.tsx |
+| D62 | E2E 测试验证 | 308/308 Playwright 测试通过（100%），含 console errors + performance | evidence | doc/00_project/initiative_quantum_x/notes.md |
+| D63 | Auth E2E 修复 | Password toggle aria-label + noValidate + branding selector | code | frontend/src/app/(auth)/*.tsx, frontend/e2e/auth.spec.ts |
+| D64 | Card 语义修复 | CardTitle 从 div 改为 h3，支持 heading role | code | frontend/src/components/ui/card.tsx |
 
 # Release/Deployment Notes
 - rollout strategy: Local development → Paper trading → Testnet → Production
@@ -74,3 +100,11 @@ Related:
 - 2026-01-26: added backend implementation deliverables (D20-D32): E1-E7 Epic code, API integration, verification report.
 - 2026-01-26: MVP implementation complete. All 32 deliverables ready.
 - 2026-01-26: Added UI/UX polish deliverables (D33-D37): theme, responsive, loading, animations.
+- 2026-01-26: Added D38 (a11y) and D39 (form validation) deliverables.
+- 2026-01-26: Added D40 (performance optimization) deliverable. All UI/UX optimization tasks complete (T36-T42).
+- 2026-01-26: Added D41-D45 (production readiness): unit tests, E2E tests, README, CI/CD, Docker. All tasks T1-T47 complete.
+- 2026-01-26: Added D46-D50 (Phase 2 production hardening): backend Docker, env config, backend tests, API docs, security.
+- 2026-01-28: Added D56-D58 (PDCA-2/3): test-utils.tsx, UI/UX audit passed (h-dvh, 8pt spacing, single primary action), 275/275 unit tests pass.
+- 2026-01-28: Added D59 (PDCA-1): Entry/contract alignment verified, architecture route table expanded from 5 to 47 routes.
+- 2026-01-28: Added D60-D62 (E2E tests): Playwright locale fix, StatsCard testid, 58/73 E2E tests pass with console/performance verification.
+- 2026-01-28: Updated D62, added D63-D64: Auth E2E fixes (aria-label, noValidate, branding selector), Card semantic fix (div→h3). **308/308 E2E tests pass (100%)**.

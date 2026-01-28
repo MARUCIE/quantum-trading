@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Users, TrendingUp, Shield, Copy } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 const signalProviders = [
   {
@@ -40,6 +41,8 @@ const signalProviders = [
 ];
 
 export default function CopyTradingPage() {
+  const t = useTranslations("copyPage");
+
   const formatPercent = (value: number) =>
     `${value >= 0 ? "+" : ""}${value.toFixed(1)}%`;
 
@@ -48,14 +51,14 @@ export default function CopyTradingPage() {
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight">Copy Trading</h1>
+          <h1 className="text-2xl font-bold tracking-tight">{t("title")}</h1>
           <p className="text-muted-foreground">
-            Follow top-performing strategies and signal providers
+            {t("description")}
           </p>
         </div>
         <Button>
           <Copy className="mr-2 h-4 w-4" />
-          Become a Provider
+          {t("becomeProvider")}
         </Button>
       </div>
 
@@ -64,7 +67,7 @@ export default function CopyTradingPage() {
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Active Providers
+              {t("activeProviders")}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -74,7 +77,7 @@ export default function CopyTradingPage() {
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Total Subscribers
+              {t("totalSubscribers")}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -84,7 +87,7 @@ export default function CopyTradingPage() {
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Signals Today
+              {t("signalsToday")}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -94,7 +97,7 @@ export default function CopyTradingPage() {
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Avg Provider Return
+              {t("avgProviderReturn")}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -106,7 +109,7 @@ export default function CopyTradingPage() {
       {/* Signal Providers */}
       <Card>
         <CardHeader>
-          <CardTitle>Signal Providers</CardTitle>
+          <CardTitle>{t("signalProviders")}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -130,13 +133,13 @@ export default function CopyTradingPage() {
                         : "border-yellow-500/50 text-yellow-500"
                     )}
                   >
-                    {provider.status}
+                    {provider.status === "active" ? t("active") : t("paused")}
                   </Badge>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <p className="text-muted-foreground">P&L</p>
+                    <p className="text-muted-foreground">{t("pnl")}</p>
                     <p
                       className={cn(
                         "font-semibold",
@@ -147,24 +150,24 @@ export default function CopyTradingPage() {
                     </p>
                   </div>
                   <div>
-                    <p className="text-muted-foreground">Max DD</p>
+                    <p className="text-muted-foreground">{t("maxDd")}</p>
                     <p className="font-semibold text-red-500">
                       {provider.maxDrawdown}%
                     </p>
                   </div>
                   <div>
-                    <p className="text-muted-foreground">Sharpe</p>
+                    <p className="text-muted-foreground">{t("sharpe")}</p>
                     <p className="font-semibold">{provider.sharpe}</p>
                   </div>
                   <div>
-                    <p className="text-muted-foreground">Followers</p>
+                    <p className="text-muted-foreground">{t("followers")}</p>
                     <p className="font-semibold">{provider.subscribers}</p>
                   </div>
                 </div>
 
                 <Button className="w-full" variant="outline">
                   <Users className="mr-2 h-4 w-4" />
-                  Follow
+                  {t("follow")}
                 </Button>
               </div>
             ))}
@@ -177,9 +180,9 @@ export default function CopyTradingPage() {
         <CardContent className="flex items-center gap-4 py-4">
           <Shield className="h-8 w-8 text-blue-500" />
           <div>
-            <h4 className="font-semibold">Risk Management</h4>
+            <h4 className="font-semibold">{t("riskManagement")}</h4>
             <p className="text-sm text-muted-foreground">
-              Copy trading carries risks. Set position limits and stop-losses to protect your capital.
+              {t("riskManagementDesc")}
             </p>
           </div>
         </CardContent>

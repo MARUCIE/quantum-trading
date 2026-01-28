@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { Position } from "@/lib/stores/portfolio-store";
+import type { Position } from "@/lib/api/types";
 
 interface PositionsTableProps {
   positions: Position[];
@@ -72,7 +72,7 @@ export function PositionsTable({ positions }: PositionsTableProps) {
               >
                 {formatCurrency(position.unrealizedPnl)}
                 <span className="ml-1 text-xs">
-                  ({formatPercent(position.unrealizedPnlPercent)})
+                  ({formatPercent(position.unrealizedPnlPct)})
                 </span>
               </div>
             </TableCell>

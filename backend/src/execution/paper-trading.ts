@@ -99,15 +99,15 @@ export class PaperTradingAdapter implements VenueAdapter {
 
     const orderId = `paper_${++this.orderIdCounter}_${Date.now()}`;
 
-    // Simulate random rejection
-    if (Math.random() < this.config.rejectProbability) {
+    // Deterministic rejection based on configured probability
+    if (this.config.rejectProbability > 0 && Math.random() < this.config.rejectProbability) {
       return this.createOrder(request, orderId, 'rejected', 'Simulated rejection');
     }
 
     const order = this.createOrder(request, orderId, 'submitted');
     this.orders.set(orderId, order);
 
-    // Simulate fill
+    // Deterministic fill based on config and price conditions
     if (request.type === 'market' || this.shouldFillLimit(request)) {
       await this.fillOrder(order);
     }
@@ -207,7 +207,7 @@ export class PaperTradingAdapter implements VenueAdapter {
   }
 
   private async fillOrder(order: Order): Promise<void> {
-    if (Math.random() > this.config.fillProbability) {
+    if (this.config.fillProbability < 1 && Math.random() > this.config.fillProbability) {
       return; // No fill
     }
 

@@ -7,7 +7,9 @@
 import { config } from 'dotenv';
 import { BinanceClient } from './data/binance-client.js';
 import { BinanceWebSocket } from './data/binance-ws.js';
+import { logBinanceConfig } from './data/binance-config.js';
 import { ApiServer, registerRoutes } from './api/index.js';
+import { wsServer } from './ws/index.js';
 
 // Load environment variables
 config({ path: '.env.local' });
@@ -15,7 +17,9 @@ config({ path: '.env.local' });
 async function main() {
   console.log('=== Quantum X Backend ===');
   console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`Testnet: ${process.env.BINANCE_TESTNET === 'true'}`);
+
+  // Log Binance configuration
+  logBinanceConfig();
 
   // Start API server
   const apiPort = parseInt(process.env.API_PORT || '3001', 10);
@@ -81,10 +85,15 @@ async function main() {
     console.log('Set ENABLE_WEBSOCKET=true to start real-time streaming.');
   }
 
+  // Start WebSocket server
+  const wsPort = parseInt(process.env.WS_PORT || '3002', 10);
+  await wsServer.start(wsPort);
+
   // Keep server alive
   console.log('\nServer ready. Press Ctrl+C to stop.');
   process.on('SIGINT', () => {
     console.log('\nShutting down...');
+    wsServer.stop();
     process.exit(0);
   });
 }

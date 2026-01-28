@@ -4,7 +4,9 @@ import { Bell, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { LanguageSwitcher } from "@/components/language-switcher";
 import { MobileNav } from "@/components/layout/mobile-nav";
+import { AssetClassSelector } from "@/components/ui/asset-class-selector";
 import {
   Tooltip,
   TooltipContent,
@@ -60,6 +62,11 @@ export function Header() {
 
       {/* Right side */}
       <div className="flex items-center gap-1 md:gap-2" role="group" aria-label="Actions">
+        {/* Asset Class Selector */}
+        <div className="hidden sm:block">
+          <AssetClassSelector />
+        </div>
+
         {/* Market Status - Hidden on mobile */}
         <div
           className="hidden md:flex mr-4 items-center gap-2"
@@ -109,6 +116,9 @@ export function Header() {
           </TooltipTrigger>
           <TooltipContent>3 unread notifications</TooltipContent>
         </Tooltip>
+
+        {/* Language Switcher */}
+        <LanguageSwitcher />
 
         {/* Theme Toggle */}
         <ThemeToggle />

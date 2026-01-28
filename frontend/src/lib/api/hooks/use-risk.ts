@@ -6,7 +6,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { apiClient } from '../client';
-import type { RiskEvent, RiskMetrics } from '../types';
+import type { RiskEvent, RiskLimits, RiskMetrics } from '../types';
 
 // Query Keys
 export const riskKeys = {
@@ -14,6 +14,7 @@ export const riskKeys = {
   metrics: () => [...riskKeys.all, 'metrics'] as const,
   events: () => [...riskKeys.all, 'events'] as const,
   eventsByLevel: (level: string) => [...riskKeys.all, 'events', level] as const,
+  limits: () => [...riskKeys.all, 'limits'] as const,
 };
 
 // API Functions
@@ -29,6 +30,10 @@ async function fetchRiskEventsByLevel(
   level: 'info' | 'warning' | 'critical'
 ): Promise<RiskEvent[]> {
   return apiClient.get<RiskEvent[]>(`/api/risk/events?level=${level}`);
+}
+
+async function fetchRiskLimits(): Promise<RiskLimits> {
+  return apiClient.get<RiskLimits>('/api/risk/limits');
 }
 
 // Hooks
@@ -56,5 +61,13 @@ export function useRiskEventsByLevel(level: 'info' | 'warning' | 'critical') {
     queryFn: () => fetchRiskEventsByLevel(level),
     staleTime: 5000,
     refetchInterval: 10000,
+  });
+}
+
+export function useRiskLimits() {
+  return useQuery({
+    queryKey: riskKeys.limits(),
+    queryFn: fetchRiskLimits,
+    staleTime: 30000,
   });
 }

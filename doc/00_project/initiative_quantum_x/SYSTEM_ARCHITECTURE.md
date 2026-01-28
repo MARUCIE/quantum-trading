@@ -112,14 +112,90 @@ flowchart TB
 - **State**: Zustand (client) + TanStack Query (server)
 - **Real-time**: Native WebSocket with auto-reconnect
 
-### 页面结构
+### 页面结构（47 Routes）
+
+#### Core / Dashboard
 | 路由 | 功能 | 数据源 |
 |------|------|--------|
-| `/overview` | Portfolio overview, P&L | REST + WS |
+| `/` | Dashboard / Portfolio overview | REST + WS |
+| `/portfolio-analytics` | Portfolio analytics & metrics | REST |
+| `/allocation` | Asset allocation view | REST |
+| `/pnl-calendar` | P&L calendar heatmap | REST |
+| `/attribution` | Performance attribution | REST |
+
+#### Trading
+| 路由 | 功能 | 数据源 |
+|------|------|--------|
+| `/trading` | Live trading view | REST + WS |
+| `/orderbook` | Order book depth | WS |
+| `/signals` | Trading signals | REST + WS |
+| `/watchlist` | Watchlist management | REST |
+| `/scanner` | Market scanner | REST + WS |
+
+#### Strategies
+| 路由 | 功能 | 数据源 |
+|------|------|--------|
 | `/strategies` | Strategy management | REST |
 | `/backtest` | Backtest results | REST |
-| `/trading` | Live trading view | REST + WS |
-| `/risk` | Risk monitoring | REST + WS |
+| `/model-backtest` | ML model backtesting | REST |
+| `/optimizer` | Strategy optimizer | REST |
+| `/strategy-generator` | AI strategy generator | REST |
+| `/ml-models` | ML models management | REST |
+| `/feature-importance` | Feature importance analysis | REST |
+
+#### Risk Management
+| 路由 | 功能 | 数据源 |
+|------|------|--------|
+| `/risk` | Risk monitoring dashboard | REST + WS |
+| `/position-sizing` | Position sizing calculator | REST |
+| `/correlation` | Correlation matrix | REST |
+| `/smart-routing` | Smart order routing | REST |
+
+#### Copy Trading
+| 路由 | 功能 | 数据源 |
+|------|------|--------|
+| `/copy` | Copy trading hub | REST + WS |
+| `/leaderboard` | Trader leaderboard | REST |
+| `/compare` | Strategy comparison | REST |
+| `/marketplace` | Strategy marketplace | REST |
+
+#### Analysis & Reports
+| 路由 | 功能 | 数据源 |
+|------|------|--------|
+| `/journal` | Trading journal | REST |
+| `/calendar` | Calendar view | REST |
+| `/trade-stats` | Trade statistics | REST |
+| `/arbitrage` | Arbitrage opportunities | REST + WS |
+| `/mtf` | Multi-timeframe analysis | REST |
+| `/replay` | Market replay | REST |
+
+#### Infrastructure
+| 路由 | 功能 | 数据源 |
+|------|------|--------|
+| `/exchanges` | Exchange connections | REST |
+| `/exchange-compare` | Exchange comparison | REST |
+| `/api-keys` | API key management | REST |
+| `/config` | System configuration | REST |
+| `/infrastructure` | Infrastructure status | REST + WS |
+| `/monitoring` | System monitoring | REST + WS |
+| `/audit` | Audit logs | REST |
+
+#### Settings & Preferences
+| 路由 | 功能 | 数据源 |
+|------|------|--------|
+| `/settings` | User settings | REST |
+| `/preferences` | User preferences | REST |
+| `/notifications` | Notification settings | REST |
+| `/alerts` | Alert management | REST + WS |
+| `/dashboard-builder` | Dashboard customization | REST |
+| `/mobile` | Mobile-optimized view | REST + WS |
+
+#### Authentication (Route Group: `(auth)`)
+| 路由 | 功能 | 数据源 |
+|------|------|--------|
+| `/login` | User login | REST |
+| `/register` | User registration | REST |
+| `/forgot-password` | Password reset | REST |
 
 ### 性能目标
 - LCP < 2.5s

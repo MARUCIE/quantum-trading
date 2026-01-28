@@ -11,34 +11,38 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useStrategyStore, StrategyStatus } from "@/lib/stores/strategy-store";
+import { useStrategies } from "@/lib/api/hooks";
 import { Plus, Play, Pause, Square, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
-const statusConfig: Record<
+type StrategyStatus = "active" | "paused" | "stopped" | "error";
+
+const statusStyles: Record<
   StrategyStatus,
-  { label: string; color: string; bgColor: string }
+  { color: string; bgColor: string }
 > = {
-  active: {
-    label: "Active",
-    color: "text-green-500",
-    bgColor: "bg-green-500/10",
-  },
-  paused: {
-    label: "Paused",
-    color: "text-yellow-500",
-    bgColor: "bg-yellow-500/10",
-  },
-  stopped: {
-    label: "Stopped",
-    color: "text-red-500",
-    bgColor: "bg-red-500/10",
-  },
-  error: { label: "Error", color: "text-red-500", bgColor: "bg-red-500/10" },
+  active: { color: "text-green-500", bgColor: "bg-green-500/10" },
+  paused: { color: "text-yellow-500", bgColor: "bg-yellow-500/10" },
+  stopped: { color: "text-red-500", bgColor: "bg-red-500/10" },
+  error: { color: "text-red-500", bgColor: "bg-red-500/10" },
 };
 
 export default function StrategiesPage() {
-  const { strategies } = useStrategyStore();
+  const t = useTranslations("strategiesPage");
+  const { data: strategies } = useStrategies();
+  const strategyList = strategies ?? [];
+
+  // Status labels with translations
+  const getStatusLabel = (status: StrategyStatus) => {
+    const labels: Record<StrategyStatus, string> = {
+      active: t("statusActive"),
+      paused: t("statusPaused"),
+      stopped: t("statusStopped"),
+      error: t("statusError"),
+    };
+    return labels[status];
+  };
 
   const formatCurrency = (value: number) =>
     new Intl.NumberFormat("en-US", {
@@ -54,14 +58,14 @@ export default function StrategiesPage() {
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight">Strategies</h1>
+          <h1 className="text-2xl font-bold tracking-tight">{t("title")}</h1>
           <p className="text-muted-foreground">
-            Manage and monitor your trading strategies
+            {t("description")}
           </p>
         </div>
         <Button>
           <Plus className="mr-2 h-4 w-4" />
-          New Strategy
+          {t("newStrategy")}
         </Button>
       </div>
 
@@ -70,53 +74,53 @@ export default function StrategiesPage() {
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Total Strategies
+              {t("totalStrategies")}
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{strategies.length}</div>
+            <div className="text-2xl font-bold">{strategyList.length}</div>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Active
+              {t("active")}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-green-500">
-              {strategies.filter((s) => s.status === "active").length}
+              {strategyList.filter((s) => s.status === "active").length}
             </div>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Total P&L
+              {t("totalPnl")}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div
               className={cn(
                 "text-2xl font-bold",
-                strategies.reduce((sum, s) => sum + s.pnl, 0) >= 0
+                strategyList.reduce((sum, s) => sum + s.pnl, 0) >= 0
                   ? "text-green-500"
                   : "text-red-500"
               )}
             >
-              {formatCurrency(strategies.reduce((sum, s) => sum + s.pnl, 0))}
+              {formatCurrency(strategyList.reduce((sum, s) => sum + s.pnl, 0))}
             </div>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Total Trades
+              {t("totalTrades")}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
-              {strategies.reduce((sum, s) => sum + s.tradesCount, 0)}
+              {strategyList.reduce((sum, s) => sum + s.tradesCount, 0)}
             </div>
           </CardContent>
         </Card>
@@ -125,27 +129,27 @@ export default function StrategiesPage() {
       {/* Strategies Table */}
       <Card>
         <CardHeader>
-          <CardTitle>All Strategies</CardTitle>
+          <CardTitle>{t("allStrategies")}</CardTitle>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Name</TableHead>
-                <TableHead>Type</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Symbols</TableHead>
-                <TableHead className="text-right">P&L</TableHead>
-                <TableHead className="text-right">Sharpe</TableHead>
-                <TableHead className="text-right">Max DD</TableHead>
-                <TableHead className="text-right">Win Rate</TableHead>
-                <TableHead className="text-right">Trades</TableHead>
+                <TableHead>{t("name")}</TableHead>
+                <TableHead>{t("type")}</TableHead>
+                <TableHead>{t("status")}</TableHead>
+                <TableHead>{t("symbols")}</TableHead>
+                <TableHead className="text-right">{t("pnl")}</TableHead>
+                <TableHead className="text-right">{t("sharpe")}</TableHead>
+                <TableHead className="text-right">{t("maxDd")}</TableHead>
+                <TableHead className="text-right">{t("winRate")}</TableHead>
+                <TableHead className="text-right">{t("trades")}</TableHead>
                 <TableHead></TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {strategies.map((strategy) => {
-                const status = statusConfig[strategy.status];
+              {strategyList.map((strategy) => {
+                const styles = statusStyles[strategy.status];
                 return (
                   <TableRow key={strategy.id}>
                     <TableCell>
@@ -162,9 +166,9 @@ export default function StrategiesPage() {
                     <TableCell>
                       <Badge
                         variant="outline"
-                        className={cn(status.color, status.bgColor)}
+                        className={cn(styles.color, styles.bgColor)}
                       >
-                        {status.label}
+                        {getStatusLabel(strategy.status)}
                       </Badge>
                     </TableCell>
                     <TableCell>

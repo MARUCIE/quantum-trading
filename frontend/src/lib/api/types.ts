@@ -18,14 +18,15 @@ export interface OHLCVBar {
 }
 
 export interface Ticker {
+  timestamp: number;
   symbol: string;
+  exchange: string;
   bid: number;
   ask: number;
+  bidSize: number;
+  askSize: number;
   last: number;
-  volume24h: number;
-  change24h: number;
-  changePct24h: number;
-  timestamp: number;
+  lastSize: number;
 }
 
 // Portfolio Types
@@ -120,6 +121,18 @@ export interface RiskMetrics {
   riskEvents: RiskEvent[];
 }
 
+export interface RiskLimits {
+  account: {
+    dailyLossLimitPct: number;
+    maxLeverage: number;
+    maxDrawdownPct: number;
+  };
+  trade: {
+    maxPositionPct: number;
+    maxOrderSize: number;
+  };
+}
+
 // Order Types
 export interface Order {
   id: string;
@@ -138,14 +151,12 @@ export interface Order {
 }
 
 export interface Trade {
-  id: string;
-  orderId: string;
+  tradeId: string;
   symbol: string;
+  exchange: string;
   side: 'buy' | 'sell';
   price: number;
   quantity: number;
-  commission: number;
-  strategyId?: string;
   timestamp: number;
 }
 

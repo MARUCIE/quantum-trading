@@ -26,3 +26,19 @@
 - 回测与实盘偏差
 - 风控触发与异常处理时长
 - 跟单信号延迟与执行偏差
+
+## UI/UX 规范合规状态（PDCA-2 审计）
+
+| 检查项 | 状态 | 证据 |
+|---|---|---|
+| 视口高度 | PASS | `layout.tsx:44`, `sidebar.tsx:110` 使用 `h-dvh` |
+| 8pt 间距体系 | PASS | `globals.css` 定义 `.space-section/group/item` |
+| 页面级间距 | PASS | 所有 47 页使用 `space-y-6` 作为根容器 |
+| 单一主按钮原则 | PASS | 每页仅一个默认变体 Button |
+| 层级清晰 | PASS | PageHeader 组件强制一致层级 |
+| 留白分组 | PASS | Card 使用内置 Header/Content 间距 |
+| 无障碍 (a11y) | PASS | ARIA labels, role 属性, skip-link, focus-ring |
+| 减少动画偏好 | PASS | `@media (prefers-reduced-motion: reduce)` |
+
+**审计日期**: 2026-01-28
+**结论**: 无需代码变更，UI/UX 已符合 ui-skills 和 web-interface-guidelines 规范

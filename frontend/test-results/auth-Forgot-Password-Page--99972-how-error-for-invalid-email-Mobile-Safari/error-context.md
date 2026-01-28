@@ -1,0 +1,63 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - link "Skip to main content" [ref=e2]:
+    - /url: "#main-content"
+  - generic [ref=e4]:
+    - banner [ref=e5]:
+      - generic [ref=e6]:
+        - button "Toggle navigation menu" [ref=e7]:
+          - img
+          - generic [ref=e8]: Toggle navigation menu
+        - button "Open search" [ref=e9]:
+          - img
+      - group "Actions" [ref=e10]:
+        - 'status "Market status: Open" [ref=e11]'
+        - button "Notifications, 3 unread" [ref=e14]:
+          - img
+          - generic [ref=e15]: "3"
+        - button "Switch language" [ref=e16]:
+          - img
+          - generic [ref=e17]: Switch language
+        - button "Toggle theme" [ref=e18]:
+          - img
+          - generic [ref=e19]: Toggle theme
+    - main [active] [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - generic [ref=e23]: Q
+          - heading "Quantum X" [level=1] [ref=e24]
+          - paragraph [ref=e25]: AI-Native Quantitative Trading Platform
+        - generic [ref=e27]:
+          - generic [ref=e28]:
+            - heading "Forgot your password?" [level=2] [ref=e29]
+            - paragraph [ref=e30]: No worries, we'll send you reset instructions
+          - generic [ref=e31]:
+            - img [ref=e32]
+            - generic [ref=e34]: Please enter your email address
+          - generic [ref=e35]:
+            - generic [ref=e36]:
+              - text: Email
+              - generic [ref=e37]:
+                - img [ref=e38]
+                - textbox "Email" [ref=e41]:
+                  - /placeholder: name@example.com
+            - button "Send reset link" [ref=e42]
+          - paragraph [ref=e43]:
+            - link "Back to login" [ref=e44]:
+              - /url: /login
+              - img [ref=e45]
+              - text: Back to login
+        - paragraph [ref=e48]:
+          - text: By continuing, you agree to our
+          - link "Terms of Service" [ref=e49]:
+            - /url: /terms
+          - text: and
+          - link "Privacy Policy" [ref=e50]:
+            - /url: /privacy
+  - generic "Notifications"
+  - button "Open Next.js Dev Tools" [ref=e56] [cursor=pointer]:
+    - img [ref=e57]
+  - alert [ref=e62]
+```

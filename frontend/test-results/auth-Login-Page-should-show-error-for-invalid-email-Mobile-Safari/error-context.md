@@ -1,0 +1,85 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - link "Skip to main content" [ref=e2]:
+    - /url: "#main-content"
+  - generic [ref=e4]:
+    - banner [ref=e5]:
+      - generic [ref=e6]:
+        - button "Toggle navigation menu" [ref=e7]:
+          - img
+          - generic [ref=e8]: Toggle navigation menu
+        - button "Open search" [ref=e9]:
+          - img
+      - group "Actions" [ref=e10]:
+        - 'status "Market status: Open" [ref=e11]'
+        - button "Notifications, 3 unread" [ref=e14]:
+          - img
+          - generic [ref=e15]: "3"
+        - button "Switch language" [ref=e16]:
+          - img
+          - generic [ref=e17]: Switch language
+        - button "Toggle theme" [ref=e18]:
+          - img
+          - generic [ref=e19]: Toggle theme
+    - main [active] [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - generic [ref=e23]: Q
+          - heading "Quantum X" [level=1] [ref=e24]
+          - paragraph [ref=e25]: AI-Native Quantitative Trading Platform
+        - generic [ref=e27]:
+          - generic [ref=e28]:
+            - heading "Welcome back" [level=2] [ref=e29]
+            - paragraph [ref=e30]: Sign in to your account to continue
+          - generic [ref=e31]:
+            - img [ref=e32]
+            - generic [ref=e34]: Please fill in all fields
+          - generic [ref=e35]:
+            - generic [ref=e36]:
+              - text: Email
+              - generic [ref=e37]:
+                - img [ref=e38]
+                - textbox "Email" [ref=e41]:
+                  - /placeholder: name@example.com
+            - generic [ref=e42]:
+              - generic [ref=e43]:
+                - generic [ref=e44]: Password
+                - link "Forgot password?" [ref=e45]:
+                  - /url: /forgot-password
+              - generic [ref=e46]:
+                - img [ref=e47]
+                - textbox "Password" [ref=e50]:
+                  - /placeholder: Enter your password
+                  - text: password123
+                - button "Show" [ref=e51]:
+                  - img [ref=e52]
+            - generic [ref=e55]:
+              - checkbox "Remember me for 30 days" [ref=e56]
+              - generic [ref=e57]: Remember me for 30 days
+            - button "Sign in" [ref=e58]
+          - generic [ref=e63]: Or continue with
+          - generic [ref=e64]:
+            - button "Google" [ref=e65]:
+              - img
+              - text: Google
+            - button "GitHub" [ref=e66]:
+              - img
+              - text: GitHub
+          - paragraph [ref=e67]:
+            - text: Don't have an account?
+            - link "Create one" [ref=e68]:
+              - /url: /register
+        - paragraph [ref=e70]:
+          - text: By continuing, you agree to our
+          - link "Terms of Service" [ref=e71]:
+            - /url: /terms
+          - text: and
+          - link "Privacy Policy" [ref=e72]:
+            - /url: /privacy
+  - generic "Notifications"
+  - button "Open Next.js Dev Tools" [ref=e78] [cursor=pointer]:
+    - img [ref=e79]
+  - alert [ref=e84]
+```

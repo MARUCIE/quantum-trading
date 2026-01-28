@@ -1,0 +1,509 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - navigation "Main navigation" [ref=e4]:
+      - generic [ref=e5]:
+        - img [ref=e7]
+        - generic [ref=e11]: Quantum X
+      - navigation "Primary" [ref=e12]:
+        - link "Overview" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - button "Overview" [ref=e14]:
+            - img
+            - text: Overview
+        - link "Strategies" [ref=e15] [cursor=pointer]:
+          - /url: /strategies
+          - button "Strategies" [ref=e16]:
+            - img
+            - text: Strategies
+        - link "Backtest" [ref=e17] [cursor=pointer]:
+          - /url: /backtest
+          - button "Backtest" [ref=e18]:
+            - img
+            - text: Backtest
+        - link "Optimizer" [ref=e19] [cursor=pointer]:
+          - /url: /optimizer
+          - button "Optimizer" [ref=e20]:
+            - img
+            - text: Optimizer
+        - link "MTF Analysis" [ref=e21] [cursor=pointer]:
+          - /url: /mtf
+          - button "MTF Analysis" [ref=e22]:
+            - img
+            - text: MTF Analysis
+        - link "Trading" [ref=e23] [cursor=pointer]:
+          - /url: /trading
+          - button "Trading" [ref=e24]:
+            - img
+            - text: Trading
+        - link "Risk Management" [ref=e25] [cursor=pointer]:
+          - /url: /risk
+          - button "Risk Management" [ref=e26]:
+            - img
+            - text: Risk Management
+        - link "Copy Trading" [ref=e27] [cursor=pointer]:
+          - /url: /copy
+          - button "Copy Trading" [ref=e28]:
+            - img
+            - text: Copy Trading
+        - link "Allocation" [ref=e29] [cursor=pointer]:
+          - /url: /allocation
+          - button "Allocation" [ref=e30]:
+            - img
+            - text: Allocation
+        - link "Trading Journal" [ref=e31] [cursor=pointer]:
+          - /url: /journal
+          - button "Trading Journal" [ref=e32]:
+            - img
+            - text: Trading Journal
+        - link "Correlation" [ref=e33] [cursor=pointer]:
+          - /url: /correlation
+          - button "Correlation" [ref=e34]:
+            - img
+            - text: Correlation
+        - link "Position Sizing" [ref=e35] [cursor=pointer]:
+          - /url: /position-sizing
+          - button "Position Sizing" [ref=e36]:
+            - img
+            - text: Position Sizing
+        - link "Compare" [ref=e37] [cursor=pointer]:
+          - /url: /compare
+          - button "Compare" [ref=e38]:
+            - img
+            - text: Compare
+        - link "Order Book" [ref=e39] [cursor=pointer]:
+          - /url: /orderbook
+          - button "Order Book" [ref=e40]:
+            - img
+            - text: Order Book
+        - link "P&L Calendar" [ref=e41] [cursor=pointer]:
+          - /url: /pnl-calendar
+          - button "P&L Calendar" [ref=e42]:
+            - img
+            - text: P&L Calendar
+        - link "Signals" [ref=e43] [cursor=pointer]:
+          - /url: /signals
+          - button "Signals" [ref=e44]:
+            - img
+            - text: Signals
+        - link "Scanner" [ref=e45] [cursor=pointer]:
+          - /url: /scanner
+          - button "Scanner" [ref=e46]:
+            - img
+            - text: Scanner
+        - link "Watchlist" [ref=e47] [cursor=pointer]:
+          - /url: /watchlist
+          - button "Watchlist" [ref=e48]:
+            - img
+            - text: Watchlist
+        - link "Calendar" [ref=e49] [cursor=pointer]:
+          - /url: /calendar
+          - button "Calendar" [ref=e50]:
+            - img
+            - text: Calendar
+        - link "Attribution" [ref=e51] [cursor=pointer]:
+          - /url: /attribution
+          - button "Attribution" [ref=e52]:
+            - img
+            - text: Attribution
+        - link "Replay" [ref=e53] [cursor=pointer]:
+          - /url: /replay
+          - button "Replay" [ref=e54]:
+            - img
+            - text: Replay
+        - link "ML Models" [ref=e55] [cursor=pointer]:
+          - /url: /ml-models
+          - button "ML Models" [ref=e56]:
+            - img
+            - text: ML Models
+        - link "Features" [ref=e57] [cursor=pointer]:
+          - /url: /feature-importance
+          - button "Features" [ref=e58]:
+            - img
+            - text: Features
+        - link "Generator" [ref=e59] [cursor=pointer]:
+          - /url: /strategy-generator
+          - button "Generator" [ref=e60]:
+            - img
+            - text: Generator
+        - link "ML Backtest" [ref=e61] [cursor=pointer]:
+          - /url: /model-backtest
+          - button "ML Backtest" [ref=e62]:
+            - img
+            - text: ML Backtest
+        - link "Exchanges" [ref=e63] [cursor=pointer]:
+          - /url: /exchanges
+          - button "Exchanges" [ref=e64]:
+            - img
+            - text: Exchanges
+        - link "Compare" [ref=e65] [cursor=pointer]:
+          - /url: /exchange-compare
+          - button "Compare" [ref=e66]:
+            - img
+            - text: Compare
+        - link "Routing" [ref=e67] [cursor=pointer]:
+          - /url: /smart-routing
+          - button "Routing" [ref=e68]:
+            - img
+            - text: Routing
+        - link "Arbitrage" [ref=e69] [cursor=pointer]:
+          - /url: /arbitrage
+          - button "Arbitrage" [ref=e70]:
+            - img
+            - text: Arbitrage
+        - link "Config" [ref=e71] [cursor=pointer]:
+          - /url: /config
+          - button "Config" [ref=e72]:
+            - img
+            - text: Config
+        - link "Infrastructure" [ref=e73] [cursor=pointer]:
+          - /url: /infrastructure
+          - button "Infrastructure" [ref=e74]:
+            - img
+            - text: Infrastructure
+        - link "Monitoring" [ref=e75] [cursor=pointer]:
+          - /url: /monitoring
+          - button "Monitoring" [ref=e76]:
+            - img
+            - text: Monitoring
+        - link "Notifications" [ref=e77] [cursor=pointer]:
+          - /url: /notifications
+          - button "Notifications" [ref=e78]:
+            - img
+            - text: Notifications
+        - link "Preferences" [ref=e79] [cursor=pointer]:
+          - /url: /preferences
+          - button "Preferences" [ref=e80]:
+            - img
+            - text: Preferences
+        - link "Dashboard Builder" [ref=e81] [cursor=pointer]:
+          - /url: /dashboard-builder
+          - button "Dashboard Builder" [ref=e82]:
+            - img
+            - text: Dashboard Builder
+        - link "Portfolio" [ref=e83] [cursor=pointer]:
+          - /url: /portfolio-analytics
+          - button "Portfolio" [ref=e84]:
+            - img
+            - text: Portfolio
+        - link "Trade Stats" [ref=e85] [cursor=pointer]:
+          - /url: /trade-stats
+          - button "Trade Stats" [ref=e86]:
+            - img
+            - text: Trade Stats
+        - link "Leaderboard" [ref=e87] [cursor=pointer]:
+          - /url: /leaderboard
+          - button "Leaderboard" [ref=e88]:
+            - img
+            - text: Leaderboard
+        - link "Marketplace" [ref=e89] [cursor=pointer]:
+          - /url: /marketplace
+          - button "Marketplace" [ref=e90]:
+            - img
+            - text: Marketplace
+        - link "Mobile" [ref=e91] [cursor=pointer]:
+          - /url: /mobile
+          - button "Mobile" [ref=e92]:
+            - img
+            - text: Mobile
+      - navigation "Secondary" [ref=e93]:
+        - link "Alerts" [ref=e94] [cursor=pointer]:
+          - /url: /alerts
+          - button "Alerts" [ref=e95]:
+            - img
+            - text: Alerts
+        - link "API Keys" [ref=e96] [cursor=pointer]:
+          - /url: /api-keys
+          - button "API Keys" [ref=e97]:
+            - img
+            - text: API Keys
+        - link "Audit Log" [ref=e98] [cursor=pointer]:
+          - /url: /audit
+          - button "Audit Log" [ref=e99]:
+            - img
+            - text: Audit Log
+        - link "Settings" [ref=e100] [cursor=pointer]:
+          - /url: /settings
+          - button "Settings" [ref=e101]:
+            - img
+            - text: Settings
+      - region "User info" [ref=e102]:
+        - generic [ref=e103]:
+          - generic [ref=e105]: QX
+          - generic [ref=e106]:
+            - paragraph [ref=e107]: Quantum X
+            - paragraph [ref=e108]: Paper Trading
+    - generic [ref=e109]:
+      - banner [ref=e110]:
+        - search [ref=e112]:
+          - img [ref=e113]
+          - searchbox "Search strategies and assets" [ref=e116]
+          - generic [ref=e117]: /
+        - group "Actions" [ref=e118]:
+          - button "Cryptocurrency" [ref=e120]:
+            - img
+            - generic [ref=e121]: Cryptocurrency
+            - img
+          - 'status "Market status: Open" [ref=e122]':
+            - generic [ref=e126]: Markets Open
+          - button "Notifications, 3 unread" [ref=e127]:
+            - img
+            - generic [ref=e128]: "3"
+          - button "Switch language" [ref=e129]:
+            - img
+            - generic [ref=e130]: Switch language
+          - button "Toggle theme" [ref=e131]:
+            - img
+            - generic [ref=e132]: Toggle theme
+      - main [ref=e133]:
+        - generic [ref=e134]:
+          - generic [ref=e136]:
+            - img [ref=e138]
+            - generic [ref=e143]:
+              - heading "Dashboard" [level=1] [ref=e144]
+              - paragraph [ref=e145]: Overview of your portfolio and trading activity
+          - generic [ref=e146]:
+            - generic [ref=e147]:
+              - generic [ref=e148]:
+                - heading "Total Portfolio Value" [level=3] [ref=e149]
+                - img [ref=e150]
+              - generic [ref=e153]:
+                - generic [ref=e154]: $125,000.00
+                - paragraph [ref=e155]: +12.60% all time
+            - generic [ref=e156]:
+              - generic [ref=e157]:
+                - heading "Today's P&L" [level=3] [ref=e158]
+                - img [ref=e159]
+              - generic [ref=e162]:
+                - generic [ref=e163]: $2,340.00
+                - paragraph [ref=e164]: +1.90% vs yesterday
+            - generic [ref=e165]:
+              - generic [ref=e166]:
+                - heading "Active Strategies" [level=3] [ref=e167]
+                - img [ref=e168]
+              - generic [ref=e171]: "2"
+            - generic [ref=e172]:
+              - generic [ref=e173]:
+                - heading "Strategy P&L" [level=3] [ref=e174]
+                - img [ref=e175]
+              - generic [ref=e178]:
+                - generic [ref=e179]: $8,500.00
+                - paragraph [ref=e180]: +8.50% realized
+          - generic [ref=e181]:
+            - generic [ref=e182]:
+              - generic [ref=e183]:
+                - heading "BTC/USDT" [level=3] [ref=e184]
+                - tablist [ref=e186]:
+                  - tab "1H" [ref=e187]
+                  - tab "4H" [ref=e188]
+                  - tab "1D" [selected] [ref=e189]
+                  - tab "1W" [ref=e190]
+              - table [ref=e194]:
+                - row [ref=e195]:
+                  - cell
+                  - cell [ref=e196]:
+                    - link "Charting by TradingView" [ref=e200] [cursor=pointer]:
+                      - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+                      - img [ref=e201]
+                  - cell [ref=e205]
+                - row [ref=e209]:
+                  - cell
+                  - cell [ref=e210]
+                  - cell [ref=e214]
+            - generic [ref=e217]:
+              - heading "Asset Allocation" [level=3] [ref=e219]
+              - generic [ref=e221]:
+                - generic [ref=e223]:
+                  - generic [ref=e226]: BTC/USDT
+                  - generic [ref=e227]: 61.70%
+                - generic [ref=e231]:
+                  - generic [ref=e234]: ETH/USDT
+                  - generic [ref=e235]: 31.54%
+                - generic [ref=e239]:
+                  - generic [ref=e242]: SOL/USDT
+                  - generic [ref=e243]: 6.76%
+          - generic [ref=e246]:
+            - generic [ref=e247]:
+              - heading "Open Positions" [level=3] [ref=e249]
+              - table [ref=e252]:
+                - rowgroup [ref=e253]:
+                  - row "Symbol Side Quantity Entry Price Current Price P&L" [ref=e254]:
+                    - columnheader "Symbol" [ref=e255]
+                    - columnheader "Side" [ref=e256]
+                    - columnheader "Quantity" [ref=e257]
+                    - columnheader "Entry Price" [ref=e258]
+                    - columnheader "Current Price" [ref=e259]
+                    - columnheader "P&L" [ref=e260]
+                - rowgroup [ref=e261]:
+                  - row "BTC/USDT LONG 0.5 $42,000.00 $67,500.00 $12,750.00(+60.71%)" [ref=e262] [cursor=pointer]:
+                    - cell "BTC/USDT" [ref=e263]
+                    - cell "LONG" [ref=e264]:
+                      - generic [ref=e265]: LONG
+                    - cell "0.5" [ref=e266]
+                    - cell "$42,000.00" [ref=e267]
+                    - cell "$67,500.00" [ref=e268]
+                    - cell "$12,750.00(+60.71%)" [ref=e269]:
+                      - generic [ref=e270]:
+                        - text: $12,750.00
+                        - generic [ref=e271]: (+60.71%)
+                  - row "ETH/USDT LONG 5 $2,800.00 $3,450.00 $3,250.00(+23.21%)" [ref=e272] [cursor=pointer]:
+                    - cell "ETH/USDT" [ref=e273]
+                    - cell "LONG" [ref=e274]:
+                      - generic [ref=e275]: LONG
+                    - cell "5" [ref=e276]
+                    - cell "$2,800.00" [ref=e277]
+                    - cell "$3,450.00" [ref=e278]
+                    - cell "$3,250.00(+23.21%)" [ref=e279]:
+                      - generic [ref=e280]:
+                        - text: $3,250.00
+                        - generic [ref=e281]: (+23.21%)
+                  - row "SOL/USDT SHORT 20 $195.00 $185.00 $200.00(+5.13%)" [ref=e282] [cursor=pointer]:
+                    - cell "SOL/USDT" [ref=e283]
+                    - cell "SHORT" [ref=e284]:
+                      - generic [ref=e285]: SHORT
+                    - cell "20" [ref=e286]
+                    - cell "$195.00" [ref=e287]
+                    - cell "$185.00" [ref=e288]
+                    - cell "$200.00(+5.13%)" [ref=e289]:
+                      - generic [ref=e290]:
+                        - text: $200.00
+                        - generic [ref=e291]: (+5.13%)
+            - generic [ref=e292]:
+              - heading "Recent Trades" [level=3] [ref=e294]
+              - generic [ref=e296]:
+                - generic [ref=e297] [cursor=pointer]:
+                  - generic [ref=e298]:
+                    - generic [ref=e299]: SELL
+                    - generic [ref=e300]:
+                      - paragraph [ref=e301]: BTCUSDT
+                      - paragraph [ref=e302]: mock
+                  - generic [ref=e303]:
+                    - paragraph [ref=e304]: 0.249148670144419 @ $67,487.09
+                    - paragraph [ref=e305]: less than a minute ago
+                - generic [ref=e306] [cursor=pointer]:
+                  - generic [ref=e307]:
+                    - generic [ref=e308]: SELL
+                    - generic [ref=e309]:
+                      - paragraph [ref=e310]: BTCUSDT
+                      - paragraph [ref=e311]: mock
+                  - generic [ref=e312]:
+                    - paragraph [ref=e313]: 4.389685715971323 @ $67,525.46
+                    - paragraph [ref=e314]: less than a minute ago
+                - generic [ref=e315] [cursor=pointer]:
+                  - generic [ref=e316]:
+                    - generic [ref=e317]: SELL
+                    - generic [ref=e318]:
+                      - paragraph [ref=e319]: BTCUSDT
+                      - paragraph [ref=e320]: mock
+                  - generic [ref=e321]:
+                    - paragraph [ref=e322]: 2.626839952890233 @ $67,477.84
+                    - paragraph [ref=e323]: less than a minute ago
+                - generic [ref=e324] [cursor=pointer]:
+                  - generic [ref=e325]:
+                    - generic [ref=e326]: SELL
+                    - generic [ref=e327]:
+                      - paragraph [ref=e328]: BTCUSDT
+                      - paragraph [ref=e329]: mock
+                  - generic [ref=e330]:
+                    - paragraph [ref=e331]: 6.751866010081759 @ $67,489.87
+                    - paragraph [ref=e332]: less than a minute ago
+                - generic [ref=e333] [cursor=pointer]:
+                  - generic [ref=e334]:
+                    - generic [ref=e335]: SELL
+                    - generic [ref=e336]:
+                      - paragraph [ref=e337]: BTCUSDT
+                      - paragraph [ref=e338]: mock
+                  - generic [ref=e339]:
+                    - paragraph [ref=e340]: 6.388640652785558 @ $67,478.91
+                    - paragraph [ref=e341]: less than a minute ago
+                - generic [ref=e342] [cursor=pointer]:
+                  - generic [ref=e343]:
+                    - generic [ref=e344]: SELL
+                    - generic [ref=e345]:
+                      - paragraph [ref=e346]: BTCUSDT
+                      - paragraph [ref=e347]: mock
+                  - generic [ref=e348]:
+                    - paragraph [ref=e349]: 7.828982072153186 @ $67,490.94
+                    - paragraph [ref=e350]: less than a minute ago
+                - generic [ref=e351] [cursor=pointer]:
+                  - generic [ref=e352]:
+                    - generic [ref=e353]: BUY
+                    - generic [ref=e354]:
+                      - paragraph [ref=e355]: BTCUSDT
+                      - paragraph [ref=e356]: mock
+                  - generic [ref=e357]:
+                    - paragraph [ref=e358]: 3.167557230934692 @ $67,525.24
+                    - paragraph [ref=e359]: 1 minute ago
+                - generic [ref=e360] [cursor=pointer]:
+                  - generic [ref=e361]:
+                    - generic [ref=e362]: SELL
+                    - generic [ref=e363]:
+                      - paragraph [ref=e364]: BTCUSDT
+                      - paragraph [ref=e365]: mock
+                  - generic [ref=e366]:
+                    - paragraph [ref=e367]: 5.906447981436109 @ $67,471.14
+                    - paragraph [ref=e368]: 1 minute ago
+                - generic [ref=e369] [cursor=pointer]:
+                  - generic [ref=e370]:
+                    - generic [ref=e371]: SELL
+                    - generic [ref=e372]:
+                      - paragraph [ref=e373]: BTCUSDT
+                      - paragraph [ref=e374]: mock
+                  - generic [ref=e375]:
+                    - paragraph [ref=e376]: 3.1434922983334013 @ $67,477.86
+                    - paragraph [ref=e377]: 1 minute ago
+                - generic [ref=e378] [cursor=pointer]:
+                  - generic [ref=e379]:
+                    - generic [ref=e380]: SELL
+                    - generic [ref=e381]:
+                      - paragraph [ref=e382]: BTCUSDT
+                      - paragraph [ref=e383]: mock
+                  - generic [ref=e384]:
+                    - paragraph [ref=e385]: 6.500030213782688 @ $67,504.03
+                    - paragraph [ref=e386]: 1 minute ago
+          - generic [ref=e387]:
+            - heading "Strategy Performance" [level=3] [ref=e389]
+            - generic [ref=e391]:
+              - generic [ref=e392]:
+                - generic [ref=e393]:
+                  - heading "BTC Momentum" [level=4] [ref=e394]
+                  - generic "Online" [ref=e395]
+                - paragraph [ref=e397]: momentum
+                - generic [ref=e398]:
+                  - generic [ref=e399]:
+                    - paragraph [ref=e400]: $5,250.00
+                    - paragraph [ref=e401]: +12.50%
+                  - generic [ref=e402]:
+                    - paragraph [ref=e403]: "1.85"
+                    - paragraph [ref=e404]: Sharpe
+              - generic [ref=e405]:
+                - generic [ref=e406]:
+                  - heading "ETH Grid Trading" [level=4] [ref=e407]
+                  - generic "Online" [ref=e408]
+                - paragraph [ref=e410]: grid
+                - generic [ref=e411]:
+                  - generic [ref=e412]:
+                    - paragraph [ref=e413]: $1,850.00
+                    - paragraph [ref=e414]: +8.20%
+                  - generic [ref=e415]:
+                    - paragraph [ref=e416]: "1.42"
+                    - paragraph [ref=e417]: Sharpe
+              - generic [ref=e418]:
+                - generic [ref=e419]:
+                  - heading "Multi-Asset Breakout" [level=4] [ref=e420]
+                  - generic "Warning" [ref=e421]
+                - paragraph [ref=e423]: breakout
+                - generic [ref=e424]:
+                  - generic [ref=e425]:
+                    - paragraph [ref=e426]: $1,400.00
+                    - paragraph [ref=e427]: +5.80%
+                  - generic [ref=e428]:
+                    - paragraph [ref=e429]: "1.15"
+                    - paragraph [ref=e430]: Sharpe
+  - generic "Notifications"
+  - alert [ref=e431]
+```

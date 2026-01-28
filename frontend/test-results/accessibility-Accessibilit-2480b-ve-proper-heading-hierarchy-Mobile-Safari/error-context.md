@@ -1,0 +1,275 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2]:
+    - /url: "#main-content"
+  - generic [ref=e4]:
+    - banner [ref=e5]:
+      - generic [ref=e6]:
+        - button "Toggle navigation menu" [ref=e7]:
+          - img
+          - generic [ref=e8]: Toggle navigation menu
+        - button "Open search" [ref=e9]:
+          - img
+      - group "Actions" [ref=e10]:
+        - 'status "Market status: Open" [ref=e11]'
+        - button "Notifications, 3 unread" [ref=e14]:
+          - img
+          - generic [ref=e15]: "3"
+        - button "Switch language" [ref=e16]:
+          - img
+          - generic [ref=e17]: Switch language
+        - button "Toggle theme" [ref=e18]:
+          - img
+          - generic [ref=e19]: Toggle theme
+    - main [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e23]:
+          - img [ref=e25]
+          - generic [ref=e30]:
+            - heading "Dashboard" [level=1] [ref=e31]
+            - paragraph [ref=e32]: Overview of your portfolio and trading activity
+        - generic [ref=e33]:
+          - generic [ref=e34]:
+            - generic [ref=e35]:
+              - heading "Total Portfolio Value" [level=3] [ref=e36]
+              - img [ref=e37]
+            - generic [ref=e40]:
+              - generic [ref=e41]: $125,000.00
+              - paragraph [ref=e42]: +12.60% all time
+          - generic [ref=e43]:
+            - generic [ref=e44]:
+              - heading "Today's P&L" [level=3] [ref=e45]
+              - img [ref=e46]
+            - generic [ref=e49]:
+              - generic [ref=e50]: $2,340.00
+              - paragraph [ref=e51]: +1.90% vs yesterday
+          - generic [ref=e52]:
+            - generic [ref=e53]:
+              - heading "Active Strategies" [level=3] [ref=e54]
+              - img [ref=e55]
+            - generic [ref=e58]: "2"
+          - generic [ref=e59]:
+            - generic [ref=e60]:
+              - heading "Strategy P&L" [level=3] [ref=e61]
+              - img [ref=e62]
+            - generic [ref=e65]:
+              - generic [ref=e66]: $8,500.00
+              - paragraph [ref=e67]: +8.50% realized
+        - generic [ref=e68]:
+          - generic [ref=e69]:
+            - generic [ref=e70]:
+              - heading "BTC/USDT" [level=3] [ref=e71]
+              - tablist [ref=e73]:
+                - tab "1H" [ref=e74]
+                - tab "4H" [ref=e75]
+                - tab "1D" [selected] [ref=e76]
+                - tab "1W" [ref=e77]
+            - table [ref=e81]:
+              - row [ref=e82]:
+                - cell
+                - cell [ref=e83]:
+                  - link "Charting by TradingView" [ref=e87]:
+                    - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+                    - img [ref=e88]
+                - cell
+              - row [ref=e93]:
+                - cell
+                - cell [ref=e94]
+                - cell
+          - generic [ref=e98]:
+            - heading "Asset Allocation" [level=3] [ref=e100]
+            - generic [ref=e102]:
+              - generic [ref=e104]:
+                - generic [ref=e107]: BTC/USDT
+                - generic [ref=e108]: 61.70%
+              - generic [ref=e112]:
+                - generic [ref=e115]: ETH/USDT
+                - generic [ref=e116]: 31.54%
+              - generic [ref=e120]:
+                - generic [ref=e123]: SOL/USDT
+                - generic [ref=e124]: 6.76%
+        - generic [ref=e127]:
+          - generic [ref=e128]:
+            - heading "Open Positions" [level=3] [ref=e130]
+            - table [ref=e133]:
+              - rowgroup [ref=e134]:
+                - row "Symbol Side Quantity Entry Price Current Price P&L" [ref=e135]:
+                  - columnheader "Symbol" [ref=e136]
+                  - columnheader "Side" [ref=e137]
+                  - columnheader "Quantity" [ref=e138]
+                  - columnheader "Entry Price" [ref=e139]
+                  - columnheader "Current Price" [ref=e140]
+                  - columnheader "P&L" [ref=e141]
+              - rowgroup [ref=e142]:
+                - row "BTC/USDT LONG 0.5 $42,000.00 $67,500.00 $12,750.00(+60.71%)" [ref=e143] [cursor=pointer]:
+                  - cell "BTC/USDT" [ref=e144]
+                  - cell "LONG" [ref=e145]:
+                    - generic [ref=e146]: LONG
+                  - cell "0.5" [ref=e147]
+                  - cell "$42,000.00" [ref=e148]
+                  - cell "$67,500.00" [ref=e149]
+                  - cell "$12,750.00(+60.71%)" [ref=e150]:
+                    - generic [ref=e151]:
+                      - text: $12,750.00
+                      - generic [ref=e152]: (+60.71%)
+                - row "ETH/USDT LONG 5 $2,800.00 $3,450.00 $3,250.00(+23.21%)" [ref=e153] [cursor=pointer]:
+                  - cell "ETH/USDT" [ref=e154]
+                  - cell "LONG" [ref=e155]:
+                    - generic [ref=e156]: LONG
+                  - cell "5" [ref=e157]
+                  - cell "$2,800.00" [ref=e158]
+                  - cell "$3,450.00" [ref=e159]
+                  - cell "$3,250.00(+23.21%)" [ref=e160]:
+                    - generic [ref=e161]:
+                      - text: $3,250.00
+                      - generic [ref=e162]: (+23.21%)
+                - row "SOL/USDT SHORT 20 $195.00 $185.00 $200.00(+5.13%)" [ref=e163] [cursor=pointer]:
+                  - cell "SOL/USDT" [ref=e164]
+                  - cell "SHORT" [ref=e165]:
+                    - generic [ref=e166]: SHORT
+                  - cell "20" [ref=e167]
+                  - cell "$195.00" [ref=e168]
+                  - cell "$185.00" [ref=e169]
+                  - cell "$200.00(+5.13%)" [ref=e170]:
+                    - generic [ref=e171]:
+                      - text: $200.00
+                      - generic [ref=e172]: (+5.13%)
+          - generic [ref=e173]:
+            - heading "Recent Trades" [level=3] [ref=e175]
+            - generic [ref=e177]:
+              - generic [ref=e178] [cursor=pointer]:
+                - generic [ref=e179]:
+                  - generic [ref=e180]: SELL
+                  - generic [ref=e181]:
+                    - paragraph [ref=e182]: BTCUSDT
+                    - paragraph [ref=e183]: mock
+                - generic [ref=e184]:
+                  - paragraph [ref=e185]: 4.210467590496188 @ $67,503.33
+                  - paragraph [ref=e186]: less than a minute ago
+              - generic [ref=e187] [cursor=pointer]:
+                - generic [ref=e188]:
+                  - generic [ref=e189]: BUY
+                  - generic [ref=e190]:
+                    - paragraph [ref=e191]: BTCUSDT
+                    - paragraph [ref=e192]: mock
+                - generic [ref=e193]:
+                  - paragraph [ref=e194]: 7.814764166105517 @ $67,472.43
+                  - paragraph [ref=e195]: less than a minute ago
+              - generic [ref=e196] [cursor=pointer]:
+                - generic [ref=e197]:
+                  - generic [ref=e198]: BUY
+                  - generic [ref=e199]:
+                    - paragraph [ref=e200]: BTCUSDT
+                    - paragraph [ref=e201]: mock
+                - generic [ref=e202]:
+                  - paragraph [ref=e203]: 6.672713687404844 @ $67,474.01
+                  - paragraph [ref=e204]: less than a minute ago
+              - generic [ref=e205] [cursor=pointer]:
+                - generic [ref=e206]:
+                  - generic [ref=e207]: BUY
+                  - generic [ref=e208]:
+                    - paragraph [ref=e209]: BTCUSDT
+                    - paragraph [ref=e210]: mock
+                - generic [ref=e211]:
+                  - paragraph [ref=e212]: 2.122831344126357 @ $67,533.30
+                  - paragraph [ref=e213]: less than a minute ago
+              - generic [ref=e214] [cursor=pointer]:
+                - generic [ref=e215]:
+                  - generic [ref=e216]: BUY
+                  - generic [ref=e217]:
+                    - paragraph [ref=e218]: BTCUSDT
+                    - paragraph [ref=e219]: mock
+                - generic [ref=e220]:
+                  - paragraph [ref=e221]: 9.62470461481477 @ $67,519.67
+                  - paragraph [ref=e222]: less than a minute ago
+              - generic [ref=e223] [cursor=pointer]:
+                - generic [ref=e224]:
+                  - generic [ref=e225]: BUY
+                  - generic [ref=e226]:
+                    - paragraph [ref=e227]: BTCUSDT
+                    - paragraph [ref=e228]: mock
+                - generic [ref=e229]:
+                  - paragraph [ref=e230]: 8.842697705070794 @ $67,519.33
+                  - paragraph [ref=e231]: less than a minute ago
+              - generic [ref=e232] [cursor=pointer]:
+                - generic [ref=e233]:
+                  - generic [ref=e234]: BUY
+                  - generic [ref=e235]:
+                    - paragraph [ref=e236]: BTCUSDT
+                    - paragraph [ref=e237]: mock
+                - generic [ref=e238]:
+                  - paragraph [ref=e239]: 3.848869592469981 @ $67,484.82
+                  - paragraph [ref=e240]: 1 minute ago
+              - generic [ref=e241] [cursor=pointer]:
+                - generic [ref=e242]:
+                  - generic [ref=e243]: SELL
+                  - generic [ref=e244]:
+                    - paragraph [ref=e245]: BTCUSDT
+                    - paragraph [ref=e246]: mock
+                - generic [ref=e247]:
+                  - paragraph [ref=e248]: 9.756951123392293 @ $67,477.70
+                  - paragraph [ref=e249]: 1 minute ago
+              - generic [ref=e250] [cursor=pointer]:
+                - generic [ref=e251]:
+                  - generic [ref=e252]: BUY
+                  - generic [ref=e253]:
+                    - paragraph [ref=e254]: BTCUSDT
+                    - paragraph [ref=e255]: mock
+                - generic [ref=e256]:
+                  - paragraph [ref=e257]: 9.35798857187098 @ $67,498.11
+                  - paragraph [ref=e258]: 1 minute ago
+              - generic [ref=e259] [cursor=pointer]:
+                - generic [ref=e260]:
+                  - generic [ref=e261]: BUY
+                  - generic [ref=e262]:
+                    - paragraph [ref=e263]: BTCUSDT
+                    - paragraph [ref=e264]: mock
+                - generic [ref=e265]:
+                  - paragraph [ref=e266]: 8.855101654702812 @ $67,485.89
+                  - paragraph [ref=e267]: 1 minute ago
+        - generic [ref=e268]:
+          - heading "Strategy Performance" [level=3] [ref=e270]
+          - generic [ref=e272]:
+            - generic [ref=e273]:
+              - generic [ref=e274]:
+                - heading "BTC Momentum" [level=4] [ref=e275]
+                - generic "Online" [ref=e276]
+              - paragraph [ref=e278]: momentum
+              - generic [ref=e279]:
+                - generic [ref=e280]:
+                  - paragraph [ref=e281]: $5,250.00
+                  - paragraph [ref=e282]: +12.50%
+                - generic [ref=e283]:
+                  - paragraph [ref=e284]: "1.85"
+                  - paragraph [ref=e285]: Sharpe
+            - generic [ref=e286]:
+              - generic [ref=e287]:
+                - heading "ETH Grid Trading" [level=4] [ref=e288]
+                - generic "Online" [ref=e289]
+              - paragraph [ref=e291]: grid
+              - generic [ref=e292]:
+                - generic [ref=e293]:
+                  - paragraph [ref=e294]: $1,850.00
+                  - paragraph [ref=e295]: +8.20%
+                - generic [ref=e296]:
+                  - paragraph [ref=e297]: "1.42"
+                  - paragraph [ref=e298]: Sharpe
+            - generic [ref=e299]:
+              - generic [ref=e300]:
+                - heading "Multi-Asset Breakout" [level=4] [ref=e301]
+                - generic "Warning" [ref=e302]
+              - paragraph [ref=e304]: breakout
+              - generic [ref=e305]:
+                - generic [ref=e306]:
+                  - paragraph [ref=e307]: $1,400.00
+                  - paragraph [ref=e308]: +5.80%
+                - generic [ref=e309]:
+                  - paragraph [ref=e310]: "1.15"
+                  - paragraph [ref=e311]: Sharpe
+  - generic "Notifications"
+  - button "Open Next.js Dev Tools" [ref=e317] [cursor=pointer]:
+    - img [ref=e318]
+  - alert [ref=e323]
+```

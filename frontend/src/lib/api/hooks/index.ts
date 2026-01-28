@@ -38,5 +38,6 @@ export {
   useRiskMetrics,
   useRiskEvents,
   useRiskEventsByLevel,
+  useRiskLimits,
   riskKeys,
 } from './use-risk';
