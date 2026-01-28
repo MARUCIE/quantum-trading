@@ -1,5 +1,4 @@
 "use client";
-"use no memo";
 
 import { useState, useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

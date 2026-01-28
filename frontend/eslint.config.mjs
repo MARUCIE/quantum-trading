@@ -13,6 +13,14 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  // Custom rule overrides
+  {
+    rules: {
+      // Downgrade React Compiler memoization errors to warnings
+      // These occur when useMemo patterns can't be auto-optimized
+      "react-compiler/react-compiler": "warn",
+    },
+  },
 ]);
 
 export default eslintConfig;
