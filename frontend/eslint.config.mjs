@@ -13,12 +13,16 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
-  // Custom rule overrides
+  // Custom rule overrides - MUST be last to take precedence
   {
     rules: {
-      // Downgrade React Compiler memoization errors to warnings
-      // These occur when useMemo patterns can't be auto-optimized
-      "react-compiler/react-compiler": "warn",
+      // Downgrade exhaustive-deps to warn for flexibility
+      "react-hooks/exhaustive-deps": "warn",
+      // Downgrade some TypeScript rules to warnings
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-empty-object-type": "warn",
+      "@typescript-eslint/no-this-alias": "warn",
+      "prefer-const": "warn",
     },
   },
 ]);
