@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectOption } from "@/components/ui/select";
-import { CandlestickChart } from "@/components/charts/candlestick-chart";
+import { DynamicCandlestickChart } from "@/components/charts/dynamic-candlestick-chart";
 import { generateMockCandlestickData } from "@/lib/mock-data";
 import {
   TrendingUp,
@@ -355,7 +355,7 @@ export default function MTFPage() {
 
               {/* Chart */}
               <div className={cn(focusedTimeframe ? "h-[500px]" : "h-[200px]")}>
-                <CandlestickChart
+                <DynamicCandlestickChart
                   data={chartDataMap[tf.id]}
                   height={focusedTimeframe ? 500 : 200}
                 />

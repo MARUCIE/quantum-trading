@@ -6,6 +6,8 @@
 
 // Candlestick Chart (TradingView)
 export { CandlestickChart } from "./candlestick-chart";
+// Dynamic version for lazy loading (recommended for better LCP)
+export { DynamicCandlestickChart } from "./dynamic-candlestick-chart";
 
 // Line Charts
 export {

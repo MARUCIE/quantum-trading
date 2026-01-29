@@ -144,6 +144,11 @@ Related:
 | T118 | WebSocket throughput benchmark | ai-agent | T116 | high | message rate, latency percentiles, connection limits | Done |
 | T119 | Frontend performance audit | ai-agent | T116 | medium | Lighthouse, Core Web Vitals, bundle analysis | Done |
 | T120 | Performance report + optimization | ai-agent | T117,T118,T119 | high | bottleneck analysis, fixes, final benchmarks | Done |
+| T121 | Lazy load chart components | ai-agent | T120 | high | dynamic import CandlestickChart, Recharts | Done |
+| T122 | Code-split heavy pages | ai-agent | T121 | high | dynamic import trading/ml components | Done |
+| T123 | Optimize icon bundling | ai-agent | T121 | medium | selective lucide-react imports | Done |
+| T124 | Add preload hints | ai-agent | T122 | medium | preload critical CSS/fonts | In Progress |
+| T125 | Performance verification | ai-agent | T124 | high | re-run Lighthouse, verify LCP < 2.5s | Planned |
 
 # Milestones
 - M1: Docs baseline complete (PDCA + PRD + architecture + UX)

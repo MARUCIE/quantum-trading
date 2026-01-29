@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { StatsCard } from "@/components/dashboard/stats-card";
 import { PositionsTable } from "@/components/dashboard/positions-table";
 import { RecentTrades } from "@/components/dashboard/recent-trades";
-import { CandlestickChart } from "@/components/charts/candlestick-chart";
+import { DynamicCandlestickChart } from "@/components/charts/dynamic-candlestick-chart";
 import { EmptyState } from "@/components/ui/empty-state";
 import { useMemo } from "react";
 import { useKlines, usePortfolioStats, useRecentTrades, useStrategies } from "@/lib/api/hooks";
@@ -168,7 +168,7 @@ export default function OverviewPage() {
           </CardHeader>
           <CardContent>
             {chartData.length > 0 ? (
-              <CandlestickChart data={chartData as any} height={350} />
+              <DynamicCandlestickChart data={chartData as any} height={350} />
             ) : (
               <EmptyState
                 size="sm"

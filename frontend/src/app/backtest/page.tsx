@@ -15,7 +15,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { CandlestickChart } from "@/components/charts/candlestick-chart";
+import { DynamicCandlestickChart } from "@/components/charts/dynamic-candlestick-chart";
 import { generateMockCandlestickData } from "@/lib/mock-data";
 import {
   Play,
@@ -320,7 +320,7 @@ export default function BacktestPage() {
               <CardTitle>{t("equityCurve")}</CardTitle>
             </CardHeader>
             <CardContent>
-              <CandlestickChart data={chartData} height={400} />
+              <DynamicCandlestickChart data={chartData} height={400} />
             </CardContent>
           </Card>
 

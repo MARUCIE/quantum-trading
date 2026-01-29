@@ -12,7 +12,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { CandlestickChart } from "@/components/charts/candlestick-chart";
+import { DynamicCandlestickChart } from "@/components/charts/dynamic-candlestick-chart";
 import { generateMockCandlestickData } from "@/lib/mock-data";
 import { useMemo, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
@@ -359,7 +359,7 @@ export default function TradingPage() {
             </Tabs>
           </CardHeader>
           <CardContent>
-            <CandlestickChart data={chartData} height={400} />
+            <DynamicCandlestickChart data={chartData} height={400} />
           </CardContent>
         </Card>
 
