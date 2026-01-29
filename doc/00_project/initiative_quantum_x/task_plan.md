@@ -155,6 +155,11 @@ Related:
 | T128 | Image optimization | ai-agent | T126 | medium | convert to next/image, add lazy loading | Done |
 | T129 | Font preload optimization | ai-agent | T127 | low | preload fonts, optimize loading strategy | Done |
 | T130 | Final performance verification | ai-agent | T129 | high | verify LCP < 2.5s, Performance > 80 | Done |
+| T131 | UI/UX SOP - Planning & Tool Inventory | ai-agent | T130 | high | init planning-with-files, skill/MCP inventory | Done |
+| T132 | ui-skills/web-interface-guidelines audit | ai-agent | T131 | high | audit 47 pages for composition/hierarchy/emphasis/rhythm | Done |
+| T133 | Fix spacing and hierarchy issues | ai-agent | T132 | high | fix double padding on 30 pages, verify button hierarchy | Done |
+| T134 | Frontend verification | ai-agent | T133 | high | build + unit tests + E2E (94/94 pass) | Done |
+| T135 | Update PDCA docs | ai-agent | T134 | medium | update notes.md, task_plan.md, UX Map SOP reference | Done |
 
 # Milestones
 - M1: Docs baseline complete (PDCA + PRD + architecture + UX)
@@ -187,6 +192,7 @@ Related:
 - M28: Phase 6.3 complete (Production config, SSL/TLS, CDN, Monitoring dashboard)
 - M29: Phase 7 complete (Notification center, User preferences, Dashboard builder, Portfolio analytics, Trade statistics, Leaderboard, Strategy marketplace, Mobile dashboard)
 - M30: Account modes (sim/real) and real account linking complete
+- M31: UI/UX optimization SOP complete (double padding fix, 94/94 E2E tests pass)
 
 # Risks & Mitigations
 - R1: Overfitting and backtest bias / mitigation: robust validation and walk-forward

@@ -127,7 +127,7 @@ export default function LeaderboardPage() {
   const currentPeriodLabel = TIME_PERIODS.find(p => p.key === period)?.label || "";
 
   return (
-    <div className="flex-1 space-y-6 p-6">
+    <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
