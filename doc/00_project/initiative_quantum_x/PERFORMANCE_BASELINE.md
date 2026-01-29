@@ -135,8 +135,10 @@ cd frontend && npm run build && npx @next/bundle-analyzer
 | /api/health | 10.55ms | 14.47ms | 14.56ms | 5238 rps | 2% | WARN |
 | /api/accounts | 15.25ms | 15.71ms | 16.06ms | 2559 rps | 8% | WARN |
 | /api/markets | N/A | N/A | N/A | N/A | 100% | FAIL (endpoint not found) |
-| WebSocket | - | - | - | - | - | Pending |
-| Lighthouse | - | - | - | - | - | Pending |
+| WebSocket | 3ms | 3ms | - | 0.4 msg/s | 0% | PASS (latency) |
+| Lighthouse (FCP) | - | - | 904ms | - | - | PASS |
+| Lighthouse (LCP) | - | - | 8841ms | - | - | FAIL |
+| Lighthouse (CLS) | - | - | 0 | - | - | PASS |
 
 #### Findings
 1. **P95 Latency: PASS** - Both /api/health (14ms) and /api/accounts (16ms) well under 500ms threshold
@@ -163,5 +165,62 @@ cd frontend && npm run build && npx @next/bundle-analyzer
 3. Review and tree-shake unused dependencies
 4. Consider server components for static content
 
+### WebSocket Performance (2026-01-29)
+
+| Metric | Value | Target | Status |
+|---|---|---|---|
+| Connection Success | 100% | - | PASS |
+| Message Latency P50 | 3ms | < 50ms | PASS |
+| Message Latency P95 | 3ms | < 100ms | PASS |
+| Message Rate | 0.4 msg/s | > 50 msg/s | WARN (testnet limited) |
+| Connection Stability | Stable | - | PASS |
+
+**Notes**: Low message rate due to Binance testnet having lower throughput than mainnet. Latency performance is excellent.
+
+### Lighthouse Performance (2026-01-29)
+
+| Metric | Value | Target | Status |
+|---|---|---|---|
+| Performance Score | 59/100 | > 80 | FAIL |
+| FCP (First Contentful Paint) | 904ms | < 1.8s | PASS |
+| LCP (Largest Contentful Paint) | 8841ms | < 2.5s | FAIL |
+| CLS (Cumulative Layout Shift) | 0 | < 0.1 | PASS |
+| TBT (Total Blocking Time) | 603ms | < 200ms | FAIL |
+| Speed Index | 2860ms | < 3000ms | PASS |
+| Total Transfer Size | 1177 KB | < 500KB | FAIL |
+
+#### Performance Optimization Priorities
+
+1. **LCP (Critical)**: 8.8s LCP is unacceptable
+   - Identify and optimize the largest contentful element
+   - Consider lazy loading heavy components
+   - Preload critical resources
+
+2. **Total Blocking Time**: 603ms TBT affects interactivity
+   - Break up long tasks
+   - Defer non-critical JavaScript
+   - Use web workers for heavy computation
+
+3. **Bundle Size**: 1.66 MB total JS
+   - Implement route-based code splitting
+   - Dynamic import for charting libraries
+   - Tree-shake unused code
+
+## Summary (2026-01-29)
+
+| Category | Overall Status |
+|---|---|
+| Backend API Latency | PASS |
+| Backend Stability | WARN (crashes under load) |
+| Backend Error Rate | WARN (2-8%) |
+| WebSocket Latency | PASS |
+| WebSocket Throughput | WARN (testnet limited) |
+| Frontend LCP | FAIL |
+| Frontend CLS | PASS |
+| Frontend Bundle Size | FAIL |
+
+**Overall Verdict**: WARN - System functional but requires optimization before production deployment.
+
 ## Changelog
+- 2026-01-29: Added WebSocket and Lighthouse results (T117-T120)
 - 2026-01-28: Initial baseline document created (T116)
