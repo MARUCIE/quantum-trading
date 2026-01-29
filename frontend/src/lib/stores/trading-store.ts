@@ -159,7 +159,30 @@ const generateMockOrderBook = (symbol: string = "BTC/USDT"): {
 
 const mockOrderBook = generateMockOrderBook("BTC/USDT");
 
-const initialState: TradingState = {
+// Initial state data (without actions)
+type TradingStateData = Omit<
+  TradingState,
+  | "setCurrentSymbol"
+  | "setMarketPrice"
+  | "submitOrder"
+  | "cancelOrder"
+  | "setOrders"
+  | "refreshOrders"
+  | "setPositions"
+  | "closePosition"
+  | "updatePosition"
+  | "refreshPositions"
+  | "updateOrderBook"
+  | "setOrderBookConnected"
+  | "setTrades"
+  | "addTrade"
+  | "refreshTrades"
+  | "setAvailableBalance"
+  | "refreshAccountBalance"
+  | "reset"
+>;
+
+const initialState: TradingStateData = {
   currentSymbol: "BTC/USDT",
   marketPrice: 43250.0,
   priceChange24h: 2.45,
@@ -236,6 +259,9 @@ export const useTradingStore = create<TradingState>()(
       set({ isSubmittingOrder: true, orderError: null });
 
       try {
+        // Map timeInForce - API only accepts GTC/IOC/FOK, DAY maps to GTC
+        const apiTimeInForce =
+          orderData.timeInForce === "DAY" ? "GTC" : orderData.timeInForce;
         const request: OrderRequest = {
           symbol: orderData.symbol,
           side: orderData.side,
@@ -243,7 +269,7 @@ export const useTradingStore = create<TradingState>()(
           quantity: orderData.quantity,
           price: orderData.price,
           stopPrice: orderData.stopPrice,
-          timeInForce: orderData.timeInForce,
+          timeInForce: apiTimeInForce as "GTC" | "IOC" | "FOK" | undefined,
         };
         const response = await apiClient.post<ApiOrder>("/api/orders", request);
         const newOrder = mapApiOrder(response);

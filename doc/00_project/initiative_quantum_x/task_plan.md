@@ -139,6 +139,11 @@ Related:
 | T113 | Sidebar navigation optimization | ai-agent | T37 | medium | collapsible groups, reduced density, touch-friendly | Done |
 | T114 | UI/UX composition/hierarchy audit | ai-agent | T113 | medium | apply ui-skills, web-interface-guidelines | Done |
 | T115 | UI/UX SOP accounts page alignment + evidence | ai-agent | T114 | low | spacing baseline + single primary action verified | Done |
+| T116 | Performance baseline definition | ai-agent | T60 | medium | define KPIs, thresholds, and measurement methodology | Done |
+| T117 | Backend load testing | ai-agent | T116 | high | API endpoint stress test with k6/artillery | In Progress |
+| T118 | WebSocket throughput benchmark | ai-agent | T116 | high | message rate, latency percentiles, connection limits | Planned |
+| T119 | Frontend performance audit | ai-agent | T116 | medium | Lighthouse, Core Web Vitals, bundle analysis | Planned |
+| T120 | Performance report + optimization | ai-agent | T117,T118,T119 | high | bottleneck analysis, fixes, final benchmarks | Planned |
 
 # Milestones
 - M1: Docs baseline complete (PDCA + PRD + architecture + UX)
