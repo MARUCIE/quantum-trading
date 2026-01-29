@@ -46,6 +46,15 @@ Related:
 - Round 2 (UX Map simulation): PASS
 - T105-T112 Account Mode Feature Scope: COMPLETE
 
+### Three-End Consistency (2026-01-28)
+| Endpoint | SHA | Status |
+|---|---|---|
+| Local | 9b06f36 | OK |
+| GitHub | 9b06f36 | OK |
+| Production | N/A | Not deployed |
+
+Commit: `feat(accounts): implement sim/real account modes with risk integration`
+
 ---
 
 ## 2026-01-28: T111 E2E Tests for Account Flows
